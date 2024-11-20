@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="Miscanti_Venta-Inventario:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Miscanti_Venta_Inventario_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Miscanti_Venta-Inventario/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
