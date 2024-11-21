@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productos</title>
-  <link rel="stylesheet" href="../CSS/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
@@ -20,7 +20,7 @@
 </header>
 <nav>
   <ul>
-    <li><a href="../index.jsp">Inicio</a></li>
+    <li><a href="index.jsp">Inicio</a></li>
     <li><a href="productos.jsp" class="active">Productos</a></li>
     <li><a href="carrito.jsp">Carrito</a></li>
     <li><a href="contacto.jsp">Contacto</a></li>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Miscanti</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
@@ -16,20 +16,14 @@
 <nav>
     <ul>
         <li><a href="index.jsp">Inicio</a></li>
-        <li><a href="JS/productos.jsp">Productos</a></li>
-        <li><a href="JS/carrito.jsp">Carrito</a></li>
-        <li><a href="JS/contacto.jsp">Contacto</a></li>
+        <li><a href="productos.jsp">Productos</a></li>
+        <li><a href="carrito.jsp">Carrito</a></li>
+        <li><a href="contacto.jsp">Contacto</a></li>
     </ul>
 </nav>
 
 <main>
     <h2>Productos Destacados</h2>
-    <form method="get" action="JS/productos.jsp">
-        <label for="buscar">Buscar productos:</label>
-        <input type="text" id="buscar" name="query" placeholder="Escribe el nombre del producto">
-        <button type="submit">Buscar</button>
-    </form>
-
     <section class="productos">
         <!-- Aquí puedes iterar los productos dinámicamente -->
         <article class="producto">
@@ -60,7 +54,6 @@
 
 <footer>
     <p>&copy; 2024 Tienda Miscanti. Todos los derechos reservados.</p>
-    <a href="hello-servlet">Hello Servlet</a>
 </footer>
 </body>
 </html>
