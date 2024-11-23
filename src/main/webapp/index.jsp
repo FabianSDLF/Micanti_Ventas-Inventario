@@ -8,21 +8,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
+<!-- Encabezado dinámico -->
+<jsp:include page="component/header.jsp"></jsp:include>
+
+<!-- Contenido principal -->
+<main>
     <h1>Bienvenidos a la Tienda Miscanti</h1>
     <p>Encuentra los mejores productos al mejor precio</p>
-</header>
 
-<nav>
-    <ul>
-        <li><a href="index.jsp">Inicio</a></li>
-        <li><a href="productos.jsp">Productos</a></li>
-        <li><a href="carrito.jsp">Carrito</a></li>
-        <li><a href="contacto.jsp">Contacto</a></li>
-    </ul>
-</nav>
-
-<main>
     <h2>Productos Destacados</h2>
     <section class="productos">
         <!-- Aquí puedes iterar los productos dinámicamente -->
@@ -52,8 +45,10 @@
     </section>
 </main>
 
+<!-- Pie de página -->
 <footer>
     <p>&copy; 2024 Tienda Miscanti. Todos los derechos reservados.</p>
 </footer>
 </body>
 </html>
+

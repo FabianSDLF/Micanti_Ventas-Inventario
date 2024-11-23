@@ -1,4 +1,4 @@
-package org.example.miscanti_ventainventario;
+package org.example.miscanti_ventainventario.Servlet;
 
 import java.util.HashMap;
 import java.util.Map;

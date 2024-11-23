@@ -209,51 +209,91 @@ form button {
 form button:hover {
     background-color: #00509e;
 }
-
-.container {
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #f9f9f9;
+/* General Styles */
+.header-container {
+    background-color: #f8f9fa;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin: 10px 0 5px;
+.header {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+}
+
+.header-category-tree,
+.header-account,
+.cart-btn {
+    background: none;
     border: none;
-    background-color: #5cb85c;
-    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.header-search input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+}
+
+.search-btn {
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #4cae4c;
+.header-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #e9ecef;
 }
 
-a {
-    display: block;
-    margin-top: 20px;
-    color: #007bff;
+.location-btn,
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-nav a {
     text-decoration: none;
+    color: #007bff;
 }
 
-a:hover {
+.header-nav a:hover {
     text-decoration: underline;
 }
-

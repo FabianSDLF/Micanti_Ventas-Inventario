@@ -1,4 +1,4 @@
-package org.example.miscanti_ventainventario;
+package org.example.miscanti_ventainventario.Servlet;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
         if (UserDatabase.isValidUser(username, password)) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-            response.sendRedirect("welcome.jsp");
+            response.sendRedirect("index.jsp");
         } else {
             request.setAttribute("errorMessage", "Usuario o contraseña incorrectos.");
             request.getRequestDispatcher("login.jsp").forward(request, response);

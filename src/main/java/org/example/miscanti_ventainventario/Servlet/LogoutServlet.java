@@ -1,4 +1,4 @@
-package org.example.miscanti_ventainventario;
+package org.example.miscanti_ventainventario.Servlet;
 
 import java.io.IOException;
 import jakarta.servlet.annotation.WebServlet;
