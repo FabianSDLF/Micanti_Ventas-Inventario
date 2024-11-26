@@ -1,13 +1,8 @@
-package org.example.miscanti_ventainventario.Servlet;
-
-import org.example.miscanti_ventainventario.Logica.Rol;
-import org.example.miscanti_ventainventario.Logica.Usuario;
+package org.example.miscanti_ventainventario.Logica;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class UserDatabase {
+public class UserManagment {
     private static final ArrayList<Usuario> usuarios = new ArrayList<>();
 
     static {

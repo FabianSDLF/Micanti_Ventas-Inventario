@@ -1,31 +1,38 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sapul
-  Date: 21-11-2024
-  Time: 9:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
+<div class="container-login">
     <h1>Iniciar Sesión</h1>
-    <form action="login" method="Post">
+    <form action="login" method="POST">
         <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" required aria-label="Nombre de usuario">
+
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required aria-label="Contraseña">
+
         <button type="submit">Ingresar</button>
+
+        <p class="error-message">
+            <%= request.getAttribute("errorMessage") != null ? request.getAttribute("errorMessage") : "" %>
+        </p>
     </form>
-    <p style="color: red;">
-        <%= request.getAttribute("errorMessage") != null ? request.getAttribute("errorMessage") : "" %>
-    </p>
+
+    <div class="forgot-password">
+        <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div class="register-link">
+        <p>¿No tienes cuenta? <a href="register.jsp">Regístrate aquí</a></p>
+    </div>
 </div>
 </body>
+</html>
+
 </html>

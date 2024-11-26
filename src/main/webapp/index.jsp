@@ -29,9 +29,9 @@
 
     </section>
 </main>
-
 <!-- Pie de página -->
 <jsp:include page="component/footer.jsp"></jsp:include>
+
 </body>
 </html>
 

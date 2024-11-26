@@ -11,7 +11,8 @@
 
     // Puedes agregar información adicional aquí si lo necesitas, como el nombre completo, email, etc.
     String fullName = (String) session.getAttribute("fullName"); // Ejemplo de nombre completo del usuario
-    String email = (String) session.getAttribute("email"); // Ejemplo de correo electrónico del usuario
+    String email = (String) session.getAttribute("email");// Ejemplo de correo electrónico del usuario
+    String rol = session.getAttribute("rol").toString();
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta - Bienvenido <%= username %> </title>
-    <link rel="stylesheet" type="text/css" href="styles.css ">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 <body>
@@ -44,7 +45,10 @@
         <ul>
             <li><a href="order-history.jsp">Historial de pedidos</a></li>
             <li><a href="change-password.jsp">Cambiar contraseña</a></li>
-            <li><a href="edit-profile.jsp">Editar perfil</a></li>
+            <% if (rol.equals("ADMINISTRADOR")) { %>
+                <li><a href="manage-users.jsp">Administrar usuarios</a></li>
+                <li><a href="manage-inventory.jsp">Administrar inventario</a></li>
+            <% } %>
         </ul>
     </section>
 
