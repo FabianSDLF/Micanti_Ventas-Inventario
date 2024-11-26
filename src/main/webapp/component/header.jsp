@@ -11,6 +11,7 @@
 <div id="header-container" class="header-container">
     <header class="header">
         <div class="header-main">
+
             <!-- Logo -->
             <div role="button" tabindex="0" class="logo">
                 <a href="${pageContext.request.contextPath}/index.jsp">
@@ -26,22 +27,10 @@
 
 
             <!-- Botón Productos -->
-            <button class="header-products">
-                <a href="${pageContext.request.contextPath}/productos.jsp">
-                    Productos
-                </a>
+            <button class="header-products"
+                    onclick="window.location.href='${pageContext.request.contextPath}/productos.jsp'">
+                Productos
             </button>
-
-            <!-- Barra de búsqueda -->
-            <div class="header-search">
-                <form action="<%= request.getContextPath() %>/search" method="get" style="display: flex; width: 100%; align-items: center;">
-                    <input type="search" name="query" placeholder="Buscar en Miscanti" />
-                    <button type="submit" class="search-btn">
-                        Buscar
-                    </button>
-                </form>
-            </div>
-
 
             <!-- Boton login -->
             <button
@@ -66,9 +55,10 @@
 
             <!-- Icono Carrito -->
             <div class="header-icons">
-                <button class="cart-btn">
+                <button class="cart-btn"
+                        onclick="window.location.href='${pageContext.request.contextPath}/carrito.jsp'">
                     <img src="${pageContext.request.contextPath}/images/cart_icon.png" alt="Carrito" class="cart-icon-img" />
-                    <span>Carrito (<%= session.getAttribute("cartCount") != null ? session.getAttribute("cartCount") : "0" %>)</span>
+                    Carrito
                 </button>
             </div>
 

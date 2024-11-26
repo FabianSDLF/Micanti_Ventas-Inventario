@@ -7,8 +7,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.example.miscanti_ventainventario.Logica.Usuario;
 
-        @WebServlet(name = "LoginServlet", value = "/login")
+@WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,7 +18,11 @@ public class LoginServlet extends HttpServlet {
 
         if (UserDatabase.isValidUser(username, password)) {
             HttpSession session = request.getSession();
+            Usuario user = (Usuario) UserDatabase.getUser(username, password);
             session.setAttribute("username", username);
+            session.setAttribute("password", password);
+            session.setAttribute("fullName", user.getFullName());
+            session.setAttribute("email", user.getCorreo());
             response.sendRedirect("index.jsp");
         } else {
             request.setAttribute("errorMessage", "Usuario o contraseña incorrectos.");

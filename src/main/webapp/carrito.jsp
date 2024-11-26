@@ -18,14 +18,7 @@
 <header>
   <h1>Tu Carrito</h1>
 </header>
-<nav>
-  <ul>
-    <li><a href="index.jsp">Inicio</a></li>
-    <li><a href="productos.jsp">Productos</a></li>
-    <li><a href="carrito.jsp" class="active">Carrito</a></li>
-    <li><a href="contacto.jsp">Contacto</a></li>
-  </ul>
-</nav>
+<jsp:include page="component/header.jsp"></jsp:include>
 <main>
   <h2>Productos en tu carrito</h2>
   <table>
@@ -53,9 +46,7 @@
   <h3>Total: $20.000</h3>
   <button>Proceder al Pago</button>
 </main>
-<footer>
-  <p>&copy; 2024 Miscanti - Venta e Inventario</p>
-</footer>
+<jsp:include page="component/footer.jsp"></jsp:include>
 </body>
 </html>
 
