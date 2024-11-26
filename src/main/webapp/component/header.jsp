@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sapul
-  Date: 23-11-2024
-  Time: 14:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,15 +18,15 @@
                             data-chromatic="ignore"
                             itemprop="logo"
                             class="logo-img"
-                            src=""
+                            src="${pageContext.request.contextPath}/images/logo_miscanti.jpg"
                             alt="Miscanti"
                     />
                 </a>
             </div>
 
 
-            <!-- Botón Categorías -->
-            <button class="header-category-tree">
+            <!-- Botón Productos -->
+            <button class="header-products">
                 <a href="${pageContext.request.contextPath}/productos.jsp">
                     Productos
                 </a>
@@ -41,44 +34,45 @@
 
             <!-- Barra de búsqueda -->
             <div class="header-search">
-                <form action="<%= request.getContextPath() %>/search" method="get">
+                <form action="<%= request.getContextPath() %>/search" method="get" style="display: flex; width: 100%; align-items: center;">
                     <input type="search" name="query" placeholder="Buscar en Miscanti" />
                     <button type="submit" class="search-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg">
-                            <path d="..." />
-                        </svg>
-                        <span>Buscar</span>
+                        Buscar
                     </button>
                 </form>
             </div>
 
+
             <!-- Boton login -->
-            <a href="<%= session.getAttribute("username") != null ? "account.jsp" : "login.jsp" %>" class="header-account">
+            <button
+                    onclick="window.location.href='<%= session.getAttribute("username") != null ? "account.jsp" : "login.jsp" %>'"
+                    class="header-account-btn">
                 <div class="account-menu-icon">
                     <!-- Imagen del ícono -->
                     <img
-                            src="../../resources/images/account_icon.png"
+                            src="${pageContext.request.contextPath}/images/account_icon.png"
                             alt="Cuenta"
                             class="account-icon-img" />
                 </div>
                 <div class="account-menu-content">
                     <!-- Texto dinámico -->
                     <span>
-                         ¡Hola, <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Inicia sesión" %>!
-                    </span>
+            ¡Hola, <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Inicia sesión" %>!
+        </span>
                 </div>
-            </a>
+            </button>
+
 
 
             <!-- Icono Carrito -->
             <div class="header-icons">
                 <button class="cart-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" >
-                        <path d="..." />
-                    </svg>
+                    <img src="${pageContext.request.contextPath}/images/cart_icon.png" alt="Carrito" class="cart-icon-img" />
                     <span>Carrito (<%= session.getAttribute("cartCount") != null ? session.getAttribute("cartCount") : "0" %>)</span>
                 </button>
             </div>
+
+
         </div>
     </header>
 </div>

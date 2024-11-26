@@ -1,4 +1,6 @@
-/* Estilos generales */
+/* ===================== */
+/* General Styles        */
+/* ===================== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,17 +9,195 @@ body {
     color: #333;
 }
 
-header {
-    background-color: #0078d4;
+h3 {
+    text-align: right;
+    margin: 1rem 0;
+}
+
+button {
+    background-color: #25486a;
     color: white;
-    padding: 1rem 0;
-    text-align: center;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-header h1 {
-    margin: 0;
+button:hover {
+    background-color: #25486a;
 }
 
+/* ===================== */
+/* Header Styles         */
+/* ===================== */
+.header-container {
+    background-color: #008fc7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    scale: max(.5);
+    object-fit: cover; /* Ensures consistent aspect ratio */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logo-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.account-menu-icon img {
+    height: 40px;
+    width: 40px; /* Uniform size */
+    border-radius: 50%; /* Circular icon */
+    object-fit: cover; /* Ensure proper scaling */
+}
+
+.header-account-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-size: 1rem;
+}
+
+.account-menu-icon img {
+    height: 40px;
+    width: 40px; /* Uniform size */
+    border-radius: 50%; /* Circular icon */
+    object-fit: cover; /* Ensure proper scaling */
+}
+
+.account-menu-content span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+.account-menu-content span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+
+.header-products a {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+
+}
+
+.header-products {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: #3f79b1;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.header-products:hover {
+    background-color: #2e5c8b;
+}
+
+
+.header-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 8px 15px;
+    background-color: #ffffff;
+    max-width: 400px;
+    flex-grow: 1;
+    position: relative; /* Para asegurar que el botón se alinee a la derecha */
+}
+
+.header-search input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #333;
+}
+
+.header-search input::placeholder {
+    color: #aaa;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3f79b1;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Espacio entre el input y el botón */
+}
+
+.search-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.header-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #345f8a;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.header-nav a:hover {
+    color: #f0e68c;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+/* ===================== */
+/* Navigation Styles     */
+/* ===================== */
 nav ul {
     list-style: none;
     margin: 0;
@@ -44,10 +224,16 @@ nav ul li a.active {
     background-color: #003f7d;
 }
 
+/* ===================== */
+/* Main Section Styles   */
+/* ===================== */
 main {
     padding: 2rem;
 }
 
+/* ===================== */
+/* Footer Styles         */
+/* ===================== */
 footer {
     background-color: #003f7d;
     color: white;
@@ -56,7 +242,9 @@ footer {
     margin-top: 2rem;
 }
 
-/* Estilos para productos.jsp */
+/* ===================== */
+/* Products Page Styles  */
+/* ===================== */
 .productos {
     display: flex;
     flex-wrap: wrap;
@@ -116,7 +304,9 @@ footer {
     background-color: #00509e;
 }
 
-/* Estilos para carrito.jsp */
+/* ===================== */
+/* Cart Page Styles      */
+/* ===================== */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -147,153 +337,4 @@ table td button {
 
 table td button:hover {
     background-color: #cc000f;
-}
-
-h3 {
-    text-align: right;
-    margin: 1rem 0;
-}
-
-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #1e7a34;
-}
-
-/* Estilos para contacto.jsp */
-form {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 0.7rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-form button {
-    width: 100%;
-    padding: 0.7rem;
-    background-color: #0078d4;
-    color: white;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form button:hover {
-    background-color: #00509e;
-}
-/* General Styles */
-.header-container {
-    background-color: #f8f9fa;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.header-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 40px;
-}
-
-.header-category-tree,
-.header-account,
-.cart-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.header-search {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
-.header-search input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-}
-
-.search-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.header-secondary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #e9ecef;
-}
-
-.location-btn,
-.contact-info {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.header-nav {
-    display: flex;
-    gap: 20px;
-}
-
-.header-nav a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.header-nav a:hover {
-    text-decoration: underline;
 }
