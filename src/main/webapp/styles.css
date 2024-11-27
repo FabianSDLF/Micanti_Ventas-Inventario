@@ -501,21 +501,22 @@ button[type="submit"]:hover {
 
 /* Contenedor principal */
 .container-register {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    max-width: 420px;
+    width: 100%;
+    margin: 20px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Título de la página */
 h1 {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #008fc7;
+    margin-bottom: 25px;
+    color: #007bba;
+    font-weight: bold;
 }
 
 /* Estilo de los campos del formulario */
@@ -527,49 +528,62 @@ form {
 
 label {
     font-size: 1rem;
-    font-weight: bold;
-    color: #555;
+    font-weight: 600;
+    color: #333;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: #008fc7;
+    border-color: #007bba;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 186, 0.25);
+    outline: none;
 }
 
 /* Estilo del botón de registro */
 button[type="submit"] {
-    padding: 10px;
-    font-size: 1.1rem;
-    background-color: #008fc7;
-    color: white;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #007bba;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 button[type="submit"]:hover {
     background-color: #005f87;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 /* Estilo de los mensajes de error */
 .error-message {
-    color: red;
+    color: #ff4d4d;
     font-size: 1rem;
     text-align: center;
+    font-weight: bold;
+    margin-top: -10px;
 }
 
 /* Enlace para iniciar sesión */
@@ -580,12 +594,13 @@ button[type="submit"]:hover {
 
 .login-link p {
     font-size: 1rem;
+    color: #666;
 }
 
 .login-link a {
-    color: #008fc7;
+    color: #007bba;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .login-link a:hover {
@@ -595,136 +610,234 @@ button[type="submit"]:hover {
 /* Diseño responsivo */
 @media (max-width: 480px) {
     .container-register {
-        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    button[type="submit"] {
+        font-size: 1rem;
+
+        /* ============================= */
+        /* Estilos para el Carrito       */
+        /* ============================= */
+
+        /* Contenedor principal */
+
+        .cart-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-container h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #008fc7;
+        }
+
+        .cart-container h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* Tabla */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        thead {
+            background-color: #008fc7;
+            color: white;
+            text-align: left;
+        }
+
+        thead th {
+            padding: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        tbody td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .empty-cart {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #999;
+        }
+
+        /* Resumen del carrito */
+
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 2px solid #ddd;
+        }
+
+        .cart-summary h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Botones */
+
+        button, .btn-pagar {
+            background-color: #008fc7;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover, .btn-pagar:hover {
+            background-color: #005f87;
+            transform: translateY(-2px);
+        }
+
+        .btn-eliminar {
+            background-color: #e63946;
+        }
+
+        .btn-eliminar:hover {
+            background-color: #b02432;
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .cart-container {
+                width: 90%;
+            }
+
+            .cart-summary {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            table, tbody, tr, td, th {
+                display: block;
+                text-align: left;
+            }
+
+            tbody td {
+                border: none;
+                padding: 5px 0;
+            }
+
+            tbody tr {
+                margin-bottom: 15px;
+            }
+        }
     }
 }
-/* ============================= */
-/* Estilos para el Carrito       */
-/* ============================= */
 
-/* Contenedor principal */
-.cart-container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
+/* ===================== */
+/* Inventory Page Styles */
+/* ===================== */
 
-.cart-container h1 {
+/* Título principal */
+.inventory-h1 {
+    margin-top: 20px;
     font-size: 2rem;
+    font-weight: bold;
+    color: #007bba;
     text-align: center;
-    margin-bottom: 20px;
-    color: #008fc7;
+    margin-bottom: 30px;
 }
 
-.cart-container h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-}
-
-/* Tabla */
-table {
-    width: 100%;
+/* Tabla de inventario */
+.inventory-table {
+    width: 90%;
+    max-width: 800px;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
 }
 
-thead {
-    background-color: #008fc7;
-    color: white;
+/* Encabezado de la tabla */
+.inventory-table thead {
+    background-color: #007bba;
+    color: #ffffff;
+}
+
+.inventory-table thead th {
+    padding: 15px;
+    font-size: 1rem;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Filas del cuerpo */
+.inventory-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.inventory-table tbody tr:hover {
+    background-color: #f0f9ff;
+}
+
+.inventory-table tbody td {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    color: #555;
     text-align: left;
 }
 
-thead th {
-    padding: 10px;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-tbody td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size: 0.95rem;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.empty-cart {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #999;
-}
-
-/* Resumen del carrito */
-.cart-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-top: 2px solid #ddd;
-}
-
-.cart-summary h3 {
-    font-size: 1.5rem;
-    color: #333;
-}
-
-/* Botones */
-button, .btn-pagar {
-    background-color: #008fc7;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover, .btn-pagar:hover {
-    background-color: #005f87;
-    transform: translateY(-2px);
-}
-
-.btn-eliminar {
-    background-color: #e63946;
-}
-
-.btn-eliminar:hover {
-    background-color: #b02432;
+/* Última fila sin borde */
+.inventory-table tbody tr:last-child {
+    border-bottom: none;
 }
 
 /* Diseño responsivo */
-@media (max-width: 768px) {
-    .cart-container {
-        width: 90%;
+@media (max-width: 480px) {
+    .inventory-table {
+        width: 100%;
+        font-size: 0.9rem;
     }
 
-    .cart-summary {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    table, tbody, tr, td, th {
-        display: block;
-        text-align: left;
-    }
-
-    tbody td {
-        border: none;
-        padding: 5px 0;
-    }
-
-    tbody tr {
-        margin-bottom: 15px;
+    .inventory-h1 {
+        font-size: 1.5rem;
     }
 }
+

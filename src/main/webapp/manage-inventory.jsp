@@ -15,8 +15,8 @@
 
 <jsp:include page="component/header.jsp"></jsp:include>
 
-<h1 style="text-align:center;">Inventario Actual</h1>
-<table>
+<h1 class="inventory-h1">Inventario Actual</h1>
+<table class="inventory-table">
     <thead>
     <tr>
         <th>Código</th>
