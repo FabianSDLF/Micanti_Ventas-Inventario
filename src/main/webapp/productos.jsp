@@ -15,18 +15,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <h1>Productos Disponibles</h1>
-</header>
-<nav>
-  <ul>
-    <li><a href="index.jsp">Inicio</a></li>
-    <li><a href="productos.jsp" class="active">Productos</a></li>
-    <li><a href="carrito.jsp">Carrito</a></li>
-    <li><a href="contacto.jsp">Contacto</a></li>
-  </ul>
-</nav>
+
+<jsp:include page="component/header.jsp"></jsp:include>
 <main>
+  <h1>Productos disponibles</h1>
   <h2>Explora nuestros productos</h2>
   <section class="productos">
     <article class="producto">
@@ -46,9 +38,7 @@
     <!-- Añade más productos según sea necesario -->
   </section>
 </main>
-<footer>
-  <p>&copy; 2024 Miscanti - Venta e Inventario</p>
-</footer>
+<jsp:include page="component/footer.jsp"></jsp:include>
 </body>
 </html>
 

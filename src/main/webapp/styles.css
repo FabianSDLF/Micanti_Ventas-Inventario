@@ -1,4 +1,6 @@
-/* Estilos generales */
+/* ===================== */
+/* General Styles        */
+/* ===================== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,156 +9,9 @@ body {
     color: #333;
 }
 
-header {
-    background-color: #0078d4;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #00509e;
-}
-
-nav ul li {
-    margin: 0;
-}
-
-nav ul li a {
-    display: block;
-    padding: 1rem;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    background-color: #003f7d;
-}
-
-main {
-    padding: 2rem;
-}
-
-footer {
-    background-color: #003f7d;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-}
-
-/* Estilos para productos.jsp */
-.productos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.producto {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 300px;
-    padding: 1rem;
-    text-align: center;
-    transition: box-shadow 0.3s;
-}
-
-.producto:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.producto img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.producto h3 {
-    font-size: 1.5rem;
-    margin: 1rem 0 0.5rem;
-}
-
-.producto p {
-    font-size: 1rem;
-    color: #666;
-}
-
-.producto strong {
-    display: block;
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.producto button {
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.producto button:hover {
-    background-color: #00509e;
-}
-
-/* Estilos para carrito.jsp */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-}
-
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    text-align: center;
-}
-
-table th {
-    background-color: #0078d4;
-    color: white;
-}
-
-table td button {
-    background-color: #ff4b5c;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-table td button:hover {
-    background-color: #cc000f;
-}
-
-h3 {
-    text-align: right;
-    margin: 1rem 0;
-}
-
 button {
-    background-color: #28a745;
     color: white;
+    background: #008fc7;
     border: none;
     padding: 0.7rem 1.5rem;
     font-size: 1rem;
@@ -166,94 +21,710 @@ button {
 }
 
 button:hover {
-    background-color: #1e7a34;
+    background-color: #25486a;
 }
 
-/* Estilos para contacto.jsp */
-form {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 600px;
+html, body {
+    height: 100%; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================== */
+/* Header Styles         */
+/* ===================== */
+
+.cart-icon-img {
+    height: 40px;
+    width: 40px; /* Uniform size */
+    object-fit: cover; /* Ensure proper scaling */
+}
+
+.header-container {
+    background-color: #008fc7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    color: white;
+    max-height: 100px; /* Limiting the max height of the header */
 }
 
-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+.header-main {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: space-between;
+    padding: 10px 20px; /* Adjust padding for better alignment */
+    height: 100%; /* Ensure this takes up the full available height */
 }
 
-form input, form textarea {
-    width: 100%;
-    padding: 0.7rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    object-fit: cover; /* Ensures consistent aspect ratio */
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 75px; /* Ensures the logo doesn't grow too big */
+}
+
+.logo-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.account-menu-icon img {
+    height: 40px;
+    width: 40px; /* Uniform size */
+    border-radius: 50%; /* Circular icon */
+    object-fit: cover; /* Ensure proper scaling */
+}
+
+.header-account-btn {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    gap: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
     font-size: 1rem;
 }
 
-form button {
-    width: 100%;
-    padding: 0.7rem;
-    background-color: #0078d4;
+.account-menu-content span {
+    font-size: 1rem;
+    font-weight: bold;
     color: white;
+}
+
+.header-products a {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: white;
+}
+
+.header-products {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.header-products:hover {
+    background-color: #2e5c8b;
+}
+
+.header-secondary {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #345f8a;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.header-nav a:hover {
+    color: #f0e68c;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+/* ===================== */
+/* Index Section Styles   */
+/* ===================== */
+main {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+main h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #008fc7;
+    margin-bottom: 1rem;
+}
+
+main p {
+    text-align: center;
     font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño responsivo */
+    gap: 1.5rem; /* Espaciado entre productos */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Estilo para cada producto */
+.producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Evita que el contenido se desborde */
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del producto */
+.producto img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.producto img:hover {
+    transform: scale(1.05);
+}
+
+/* Título del producto */
+.producto h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+/* Descripción del producto */
+.producto p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.producto p strong {
+    color: #008fc7;
+    font-size: 1.2rem;
+}
+
+/* Botón */
+.producto button {
+    background-color: #008fc7;
+    color: white;
     border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-form button:hover {
-    background-color: #00509e;
+.producto button:hover {
+    background-color: #005f87;
+    transform: scale(1.05);
 }
 
-.container {
-    width: 300px;
+/* ===================== */
+/* Footer Styles         */
+/* ===================== */
+footer {
+    background-color: #008fc7;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* ===================== */
+/* Account Page Styles   */
+/* ===================== */
+
+/* Contenedor principal */
+.account-container {
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: 1200px; /* Aumento del ancho máximo */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column; /* Asegura que las secciones se apilen verticalmente */
+    gap: 20px; /* Espaciado entre las secciones */
+    height: 100%; /* Garantiza que el contenedor ocupe todo el espacio disponible */
+}
+
+/* Sección de información del usuario */
+.user-info {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Permite que esta sección ocupe el espacio restante */
+    max-width: 100%; /* Asegura que ocupe el ancho completo disponible */
+}
+
+/* Títulos dentro de la información */
+.user-info h2 {
+    font-size: 1.5rem;
+    color: #345f8a;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #008fc7;
+    padding-bottom: 5px;
+}
+
+/* Sección de acciones */
+.actions {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Asegura que ocupe el ancho completo disponible */
+}
+
+/* Lista de acciones */
+.actions ul {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Botones de acción */
+.actions ul li a {
+    padding: 15px 20px;
+    background-color: #008fc7;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.actions ul li a:hover {
+    background-color: #005f87;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de logout */
+.logout-section {
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin-top: auto; /* Empuja la sección de logout hacia abajo */
+    padding: 20px 0; /* Espaciado opcional dentro de la sección */
+}
+
+/* Estilo del enlace de logout */
+.logout-section a {
+    font-size: 1.2rem;
+    color: #008fc7;
+    font-weight: bold;
+    border: 2px solid #008fc7;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-section a:hover {
+    background-color: #008fc7;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .account-container {
+        flex-direction: column; /* Columnas apiladas en pantallas pequeñas */
+    }
+
+    .user-info, .actions {
+        max-width: 100%; /* Ocupan todo el ancho */
+    }
+}
+/* ===================== */
+/* Login Page Styles     */
+/* ===================== */
+
+/* Contenedor principal */
+.container-login {
+    max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título de la página */
+h1 {
     text-align: center;
-    background-color: #f9f9f9;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #008fc7;
+}
+
+/* Estilo de los campos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    display: block;
-    margin: 10px 0 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
+input[type="text"],
+input[type="password"] {
     padding: 10px;
-    margin: 10px 0 20px;
+    font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #5cb85c;
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #008fc7;
+}
+
+/* Estilo del botón de ingresar */
+button[type="submit"] {
+    padding: 10px;
+    font-size: 1.1rem;
+    background-color: #008fc7;
     color: white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-    background-color: #4cae4c;
+button[type="submit"]:hover {
+    background-color: #005f87;
+    transform: translateY(-2px);
 }
 
-a {
-    display: block;
-    margin-top: 20px;
-    color: #007bff;
+/* Estilo de los mensajes de error */
+.error-message {
+    color: red;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Enlace para recuperar la contraseña */
+.forgot-password {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.forgot-password a {
+    color: #008fc7;
     text-decoration: none;
+    font-size: 1rem;
 }
 
-a:hover {
+.forgot-password a:hover {
     text-decoration: underline;
 }
 
+/* Enlace para registrarse */
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link p {
+    font-size: 1rem;
+}
+
+.register-link a {
+    color: #008fc7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Diseño responsivo */
+@media (max-width: 480px) {
+    .container-login {
+        width: 90%;
+    }
+}
+
+/* ===================== */
+/* Register Page Styles  */
+/* ===================== */
+
+/* Contenedor principal */
+.container-register {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título de la página */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #008fc7;
+}
+
+/* Estilo de los campos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #008fc7;
+}
+
+/* Estilo del botón de registro */
+button[type="submit"] {
+    padding: 10px;
+    font-size: 1.1rem;
+    background-color: #008fc7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #005f87;
+    transform: translateY(-2px);
+}
+
+/* Estilo de los mensajes de error */
+.error-message {
+    color: red;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Enlace para iniciar sesión */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link p {
+    font-size: 1rem;
+}
+
+.login-link a {
+    color: #008fc7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Diseño responsivo */
+@media (max-width: 480px) {
+    .container-register {
+        width: 90%;
+    }
+}
+/* ============================= */
+/* Estilos para el Carrito       */
+/* ============================= */
+
+/* Contenedor principal */
+.cart-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #008fc7;
+}
+
+.cart-container h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #008fc7;
+    color: white;
+    text-align: left;
+}
+
+thead th {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Resumen del carrito */
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 2px solid #ddd;
+}
+
+.cart-summary h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Botones */
+button, .btn-pagar {
+    background-color: #008fc7;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .btn-pagar:hover {
+    background-color: #005f87;
+    transform: translateY(-2px);
+}
+
+.btn-eliminar {
+    background-color: #e63946;
+}
+
+.btn-eliminar:hover {
+    background-color: #b02432;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .cart-container {
+        width: 90%;
+    }
+
+    .cart-summary {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    table, tbody, tr, td, th {
+        display: block;
+        text-align: left;
+    }
+
+    tbody td {
+        border: none;
+        padding: 5px 0;
+    }
+
+    tbody tr {
+        margin-bottom: 15px;
+    }
+}
