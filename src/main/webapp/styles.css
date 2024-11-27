@@ -598,3 +598,133 @@ button[type="submit"]:hover {
         width: 90%;
     }
 }
+/* ============================= */
+/* Estilos para el Carrito       */
+/* ============================= */
+
+/* Contenedor principal */
+.cart-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #008fc7;
+}
+
+.cart-container h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #008fc7;
+    color: white;
+    text-align: left;
+}
+
+thead th {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Resumen del carrito */
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 2px solid #ddd;
+}
+
+.cart-summary h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Botones */
+button, .btn-pagar {
+    background-color: #008fc7;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .btn-pagar:hover {
+    background-color: #005f87;
+    transform: translateY(-2px);
+}
+
+.btn-eliminar {
+    background-color: #e63946;
+}
+
+.btn-eliminar:hover {
+    background-color: #b02432;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .cart-container {
+        width: 90%;
+    }
+
+    .cart-summary {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    table, tbody, tr, td, th {
+        display: block;
+        text-align: left;
+    }
+
+    tbody td {
+        border: none;
+        padding: 5px 0;
+    }
+
+    tbody tr {
+        margin-bottom: 15px;
+    }
+}

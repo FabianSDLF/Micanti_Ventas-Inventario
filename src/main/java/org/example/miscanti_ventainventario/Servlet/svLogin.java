@@ -11,7 +11,7 @@ import org.example.miscanti_ventainventario.Logica.UserManagment;
 import org.example.miscanti_ventainventario.Logica.Usuario;
 
 @WebServlet(name = "LoginServlet", value = "/login")
-public class LoginServlet extends HttpServlet {
+public class svLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
