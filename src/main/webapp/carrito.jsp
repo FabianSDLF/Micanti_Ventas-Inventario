@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sapul
-  Date: 20-11-2024
-  Time: 22:30
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,37 +11,62 @@
 </head>
 <body>
 <header>
-  <h1>Tu Carrito</h1>
+  <jsp:include page="component/header.jsp" />
 </header>
-<jsp:include page="component/header.jsp"></jsp:include>
 <main>
-  <h2>Productos en tu carrito</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Producto</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th>Total</th>
-      <th>Acción</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Ejemplo de fila -->
-    <tr>
-      <td>Producto 1</td>
-      <td>2</td>
-      <td>$10.000</td>
-      <td>$20.000</td>
-      <td><button>Eliminar</button></td>
-    </tr>
-    <!-- Añadir más filas dinámicamente -->
-    </tbody>
-  </table>
-  <h3>Total: $20.000</h3>
-  <button>Proceder al Pago</button>
+  <div class="cart-container">
+    <h1>Tu Carrito</h1>
+    <h2>Productos en tu carrito</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+        <th>Acción</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <%
+        List<String> miLista = BodegaManagment.getBodega().reporteInventario();
+        if (miLista.get(0).equals("La bodega está vacía.")){
+          for (String elemento : miLista) {
+            String[] partes = elemento.split("\t");
+      %>
+
+        <tr>
+          <td><%= partes[1] %></td>
+          <td>0</td>
+          <td><%= partes[3] %></td>
+          <td><%= 0 * Integer.parseInt(partes[3]) %></td>
+          <td>
+            <form action="eliminarProductoCarrito" method="post" style="display:inline;">
+              <input type="hidden" name="idProducto" value="${producto.id}" />
+              <button type="submit" class="btn-eliminar">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <%
+          }
+      } else {
+      %>
+        <tr>
+          <td colspan="5" class="empty-cart">No hay productos en tu carrito.</td>
+        </tr>
+      <%  } %>
+      </tbody>
+    </table>
+    <%-- Mostrar el total solo si hay productos --%>
+    <c:if test="${!productos.isEmpty()}">
+      <div class="cart-summary">
+        <h3>Total: $${total}</h3>
+        <button class="btn-pagar" onclick="location.href='pago.jsp'">Proceder al Pago</button>
+      </div>
+    </c:if>
+  </div>
 </main>
-<jsp:include page="component/footer.jsp"></jsp:include>
+  <jsp:include page="component/footer.jsp" />
 </body>
 </html>
-
