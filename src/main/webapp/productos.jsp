@@ -22,7 +22,7 @@
   <h2>Explora nuestros productos</h2>
   <section class="productos">
     <article class="producto">
-      <img src="img/producto1.jpg" alt="Producto 1">
+      <img src="${pageContext.request.contextPath}/images/producto1.jpg" alt="Producto">
       <h3>Producto 1</h3>
       <p>Descripción breve del producto 1.</p>
       <strong>$10.000</strong>

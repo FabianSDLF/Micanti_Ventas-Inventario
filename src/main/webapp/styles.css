@@ -35,15 +35,19 @@ html, body {
 /* Header Styles         */
 /* ===================== */
 
-.cart-icon-img {
-    height: 40px;
-    width: 40px; /* Uniform size */
+.cart-icon-img{
+    height: 30px;
+    width: 30px; /* Uniform size */
     object-fit: cover; /* Ensure proper scaling */
 }
 
 .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
     background-color: #008fc7;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Esto permite que los iconos se posicionen a la derecha */
 }
 
 .header {
@@ -61,12 +65,14 @@ html, body {
     justify-content: space-between;
     padding: 10px 20px; /* Adjust padding for better alignment */
     height: 100%; /* Ensure this takes up the full available height */
+    width: 100%;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
+    max-height: 70px;
 }
 
 .logo-img {
@@ -87,14 +93,14 @@ html, body {
     object-fit: cover; /* Ensure proper scaling */
 }
 
-.header-account-btn {
+.header-account-btn{
     display: flex;
     align-items: center; /* Ensures vertical alignment */
     gap: 10px;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     font-size: 1rem;
@@ -122,6 +128,23 @@ html, body {
 
 .header-products:hover {
     background-color: #2e5c8b;
+}
+
+.header-icons{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.cart-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    gap: 10px;
 }
 
 .header-secondary {
@@ -178,7 +201,7 @@ main p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño responsivo */
     gap: 1.5rem; /* Espaciado entre productos */
-    max-width: 1200px;
+    max-width: 300px;
     margin: 0 auto;
     padding: 1rem;
 }
