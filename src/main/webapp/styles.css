@@ -736,6 +736,12 @@ button:hover, .btn-pagar:hover {
 .btn-eliminar {
     background-color: #e63946;
 }
+.btn-añadir {
+    background-color: #e63946;
+}
+.btn-reducir {
+    background-color: #e63946;
+}
 
 .btn-eliminar:hover {
     background-color: #b02432;
