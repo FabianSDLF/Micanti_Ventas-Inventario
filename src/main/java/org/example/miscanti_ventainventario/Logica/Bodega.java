@@ -1,4 +1,4 @@
-package Inventario;
+package org.example.miscanti_ventainventario.Logica;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class Bodega {
         this.capacidadDisp = capacidadDisp;
     }
 
-    /**agrega producto a la lista de productos almacenados,
+    /**Agrega producto a la lista de productos almacenados,
      * si el producto se pudo añadir correctamente, se retorna
      * el valor true, de lo contrario, retorna false.
      *
@@ -25,7 +25,7 @@ public class Bodega {
     public boolean agregarProducto(Producto producto){
         return listaProducto.add(producto);
     }
-    /**consulta si hay de un cierto producto almacenado a través del código.
+    /**Consulta si hay de un cierto producto almacenado a través del código.
      * si el producto es encontrado, se retorna envuelto en un optional.
      * Si no está presente, se retorna un optional vacío.
      *
@@ -57,9 +57,8 @@ public class Bodega {
         }
         return false;
     }
-    /**agrega producto a la lista de productos almacenados,
-     * si el producto se pudo añadir correctamente, se retorna
-     * el valor true, de lo contrario, retorna false.
+    /**Crea una lista de los productos disponibles, incluyendo el código del producto,
+     * el nombre, y su cantidad, todo separado por tabulaciones.
      *
      * @return List</String>
      * @author Benjamín Villa
