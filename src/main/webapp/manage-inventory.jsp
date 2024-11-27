@@ -1,6 +1,5 @@
-<%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
-<%@ page import="java.util.List" %>
-<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,11 +25,7 @@
     </thead>
     <tbody>
     <%
-        Bodega bodega = new Bodega(999,20,600);
-        bodega.agregarProducto(new Producto(20, 1223, "botella"));
-        bodega.agregarProducto(new Producto(20, 1224, "limpiador"));
-        bodega.agregarProducto(new Producto(20, 1228, "tapas"));
-        List<String> miLista = bodega.reporteInventario();
+        ArrayList<String> miLista = (ArrayList<String>) BodegaManagment.getBodega().reporteInventario();
         for (String elemento : miLista) {
             String[] partes = elemento.split("\t");
     %>

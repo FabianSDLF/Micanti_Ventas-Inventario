@@ -35,7 +35,7 @@ public class Bodega {
      */
     public Optional consultarProducto(int codigo){
         for(Producto producto: listaProducto){
-            if (producto.codigo == codigo){
+            if (producto.getCodigo() == codigo){
                 return Optional.of(producto);
             }
         }
@@ -51,7 +51,7 @@ public class Bodega {
      */
     public boolean eliminarProducto(int codigo){
         for(Producto producto: listaProducto){
-            if (producto.codigo == codigo){
+            if (producto.getCodigo() == codigo){
                 return listaProducto.remove(producto);
             }
         }
@@ -67,7 +67,7 @@ public class Bodega {
         List<String> reporte = new ArrayList<>();
         String fila = "";
         for(Producto producto: listaProducto){
-            fila = producto.codigo + "\t" + producto.nombre + "\t" + producto.cantidad;
+            fila = producto.getCodigo() + "\t" + producto.getNombre() + "\t" + producto.getCantidad() + "\t"+ producto.getPrecio();
             reporte.add(fila);
         }
         if (reporte.size() == 0){
@@ -84,7 +84,7 @@ public class Bodega {
     public String[] solicitudPedido(){
         ArrayList<Producto> solicitud = new ArrayList<>();
         for(Producto producto: listaProducto){
-            if (producto.cantidad < cantidadMin){
+            if (producto.getCantidad() < cantidadMin){
                 solicitud.add(producto);
             }
         }

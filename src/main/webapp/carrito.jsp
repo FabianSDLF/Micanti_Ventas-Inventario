@@ -1,3 +1,5 @@
+<%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,27 +28,37 @@
       </tr>
       </thead>
       <tbody>
-      <%-- Se generan filas dinámicamente --%>
-      <c:forEach var="producto" items="${productos}">
+
+      <%
+        List<String> miLista = BodegaManagment.getBodega().reporteInventario();
+        for (String elemento : miLista) {
+          String[] partes = elemento.split("\t");
+      %>
+
         <tr>
-          <td>${producto.nombre}</td>
-          <td>${producto.cantidad}</td>
-          <td>${producto.precio}</td>
-          <td>${producto.cantidad * producto.precio}</td>
+          <td><%= partes[1] %></td>
+          <td>0</td>
+          <td><%= partes[3] %></td>
+          <td><%= 0 * Integer.parseInt(partes[3]) %></td>
           <td>
-            <form action="eliminarProducto" method="post" style="display:inline;">
+            <form action="eliminarProductoCarrito" method="post" style="display:inline;">
               <input type="hidden" name="idProducto" value="${producto.id}" />
               <button type="submit" class="btn-eliminar">Eliminar</button>
             </form>
           </td>
         </tr>
-      </c:forEach>
+      <%
+        }
+      %>
+
       <%-- Mostrar mensaje si el carrito está vacío --%>
-      <c:if test="${productos.isEmpty()}">
+      <%
+        if (!miLista.get(0).equals("La bodega está vacía.")) {
+          %>
         <tr>
           <td colspan="5" class="empty-cart">No hay productos en tu carrito.</td>
         </tr>
-      </c:if>
+      <%  } %>
       </tbody>
     </table>
     <%-- Mostrar el total solo si hay productos --%>
