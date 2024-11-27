@@ -31,8 +31,9 @@
 
       <%
         List<String> miLista = BodegaManagment.getBodega().reporteInventario();
-        for (String elemento : miLista) {
-          String[] partes = elemento.split("\t");
+        if (miLista.get(0).equals("La bodega está vacía.")){
+          for (String elemento : miLista) {
+            String[] partes = elemento.split("\t");
       %>
 
         <tr>
@@ -48,13 +49,9 @@
           </td>
         </tr>
       <%
-        }
+          }
+      } else {
       %>
-
-      <%-- Mostrar mensaje si el carrito está vacío --%>
-      <%
-        if (!miLista.get(0).equals("La bodega está vacía.")) {
-          %>
         <tr>
           <td colspan="5" class="empty-cart">No hay productos en tu carrito.</td>
         </tr>
