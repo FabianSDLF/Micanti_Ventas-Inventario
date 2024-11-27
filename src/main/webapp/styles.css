@@ -785,7 +785,7 @@ button[type="submit"]:active {
 /* Tabla de inventario */
 .inventory-table {
     width: 90%;
-    max-width: 800px;
+    max-width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
