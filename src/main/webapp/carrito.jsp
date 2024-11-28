@@ -31,7 +31,7 @@
 
       <%
         List<String> miLista = BodegaManagment.getBodega().reporteInventario();
-        if (miLista.get(0).equals("La bodega está vacía.")){
+        if (!miLista.get(0).equals("La bodega está vacía.")){
           for (String elemento : miLista) {
             String[] partes = elemento.split("\t");
       %>
