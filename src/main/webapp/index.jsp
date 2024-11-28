@@ -20,7 +20,7 @@
     <section class="productos">
         <!-- Aquí puedes iterar los productos dinámicamente -->
         <article class="producto">
-            <img src="../resources/images/producto1.jpg" alt="Producto 1">
+            <img src="${pageContext.request.contextPath}/images/producto1.jpg" alt="Producto">
             <h3>Producto 1</h3>
             <p>Descripción breve del producto 1.</p>
             <p><strong>$10.000</strong></p>
