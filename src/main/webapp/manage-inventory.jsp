@@ -1,5 +1,4 @@
 <%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario Actual</title>
     <link rel="stylesheet" href="styles.css">
-    </script>
 
 </head>
 <body>
@@ -42,15 +40,9 @@
                 <td><%= partes[1] %></td>
                 <td><%= partes[2] %></td>
                 <td>
-                    <input type="text" id="number" name="number" required aria-label="Cantidad a cambiar">
-                    <form action="eliminarProductoCarrito" method="post" style="display:inline;">
-                        <input type="hidden" name="idProducto" value="${producto.id}" />
-                        <button type="submit" onclick="" class="btn-añadir">Añadir</button>
-                    </form>
-                    <form action="eliminarProductoCarrito" method="post" style="display:inline;">
-                        <input type="hidden" name="idProducto" value="${producto.id}" />
-                        <button type="submit" class="btn-reducir">Reducir</button>
-                    </form>
+                    <input type="text" id="number" class= "container-register" name="number" required aria-label="cant">
+                    <button type="submit" onclick="" class="btn-añadir">Añadir</button>
+                    <button type="submit" class="btn-reducir">Reducir</button>
                 </td>
             </tr>
             <%
@@ -62,6 +54,3 @@
 <jsp:include page="component/footer.jsp" />
 </body>
 </html>
-
-
-
