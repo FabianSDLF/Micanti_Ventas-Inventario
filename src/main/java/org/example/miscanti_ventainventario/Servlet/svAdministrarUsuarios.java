@@ -15,15 +15,6 @@ import java.util.List;
 @WebServlet("/administrarUsuarios")
 public class svAdministrarUsuarios extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener la lista de usuarios desde UserManagment
-        List<Usuario> usuarios = UserManagment.obtenerUsuarios();
-
-        // Pasar la lista de usuarios al JSP
-        request.setAttribute("usuarios", usuarios);
-        request.getRequestDispatcher("/AdministrarUsuarios.jsp").forward(request, response);
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtener la lista de usuarios desde UserManagment
         List<Usuario> usuarios = UserManagment.obtenerUsuarios();
