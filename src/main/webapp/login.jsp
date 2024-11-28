@@ -11,12 +11,14 @@
 <div class="container-login">
     <h1>Iniciar Sesión</h1>
     <form action="login" method="POST">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required aria-label="Nombre de usuario">
-
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required aria-label="Contraseña">
-
+        <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required aria-label="Nombre de usuario">
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required aria-label="Contraseña">
+        </div>
         <button type="submit">Ingresar</button>
 
         <p class="error-message">
@@ -35,4 +37,3 @@
 </body>
 </html>
 
-</html>
