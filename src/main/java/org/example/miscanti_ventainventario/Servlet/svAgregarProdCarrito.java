@@ -11,6 +11,7 @@ import org.example.miscanti_ventainventario.Logica.Producto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class svAgregarProdCarrito extends HttpServlet {
     private Bodega bodega;
@@ -30,7 +31,7 @@ public class svAgregarProdCarrito extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codigoProduc = Integer.parseInt(request.getParameter("codigoProducto"));
         int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-
+        //Obtener el carrito de la sesion
         HttpSession session = request.getSession();
         List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
 
@@ -38,5 +39,25 @@ public class svAgregarProdCarrito extends HttpServlet {
             carrito = new ArrayList<>();
             session.setAttribute("carrito",carrito);
         }
+        //Buscar el producto en la bodega
+        Optional<Producto> productoOpti = bodega.consultarProducto(codigoProduc);
+        if (productoOpti.isPresent()){
+            Producto producto = productoOpti.get();
+            //Verificar si el producto ya esta en el carrito
+            boolean encontrado = false;
+            for(Producto produc : carrito){
+                if (produc.getCodigo() == producto.getCodigo()){
+                    produc.setCantidad(produc.getCantidad()+cantidad);
+                    encontrado=true;
+                    break;
+                }
+            }
+            if (!encontrado){
+                Producto newProduc = new Producto(cantidad,producto.getCodigo(),producto.getNombre(),producto.getPrecio());
+                carrito.add(newProduc);
+            }
+        }
+        //Regirigir a productos.jsp o al carrito
+        response.sendRedirect("productos.jsp");
     }
 }

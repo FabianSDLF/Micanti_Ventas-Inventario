@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
