@@ -1,6 +1,7 @@
 package org.example.miscanti_ventainventario.Logica;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserManagment {
     private static final ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -31,6 +32,23 @@ public class UserManagment {
         for (Usuario usuario : usuarios) {
             if (usuario.getNickName().equals(username) && usuario.getContrasena().equals(password)) {
                 return usuario;
+            }
+        }
+        return null;
+    }
+
+    public static boolean addUser(Usuario usuario){
+        return usuarios.add(usuario);
+    }
+
+    public static List<Usuario> obtenerUsuarios() {
+        return usuarios;
+    }
+
+    public static Usuario obtenerUsuario(String usuario) {
+        for (Usuario usuario1 : usuarios) {
+            if (usuario1.getNickName().equals(usuario)) {
+                return usuario1;
             }
         }
         return null;

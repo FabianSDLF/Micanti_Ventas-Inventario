@@ -503,11 +503,11 @@ button[type="submit"]:hover {
 .container-register {
     max-width: 420px;
     width: 100%;
-    margin: 20px;
     padding: 25px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    margin: auto;
 }
 
 /* Título de la página */
@@ -848,3 +848,125 @@ button:hover, .btn-pagar:hover {
     }
 }
 
+/* ===================== */
+/*  User's Page Styles   */
+/* ===================== */
+
+/* Contenedor principal */
+.container-manage-user {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+/* Estilo para la tabla */
+table.managment-user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table.managment-user-table th,
+table.managment-user-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table.managment-user-table th {
+    background-color: #007bba;
+    color: #fff;
+    font-weight: bold;
+}
+
+table.managment-user-table td {
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+table.managment-user-table tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
+
+table.managment-user-table select {
+    padding: 8px;
+    width: 120px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    background-color: #007bba;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #005f87;
+}
+
+/* ===================== */
+/* Password Page Styles  */
+/* ===================== */
+
+/* Contenedor para la página de cambio de contraseña */
+.container-change-password {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h1 {
+    color: #007bba;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los campos de formulario */
+.form-group {
+    margin-bottom: 15px;
+    margin-right: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #007bba;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #005f87;
+}
