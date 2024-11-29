@@ -91,7 +91,7 @@ public class Bodega {
         return solicitud.toArray(new String[solicitud.size()]);
     }
 
-    public List<Producto> obtenerProductos(){
-        return new ArrayList<>(listaProducto);
+    public List<Producto> getListaProductos(){
+        return listaProducto;
     }
 }
