@@ -13,8 +13,6 @@
 <body>
 
 <jsp:include page="component/header.jsp"></jsp:include>
-
-
 <main>
     <div class="cart-container">
         <h1>Inventario Actual</h1>
@@ -24,33 +22,53 @@
                 <th>Código</th>
                 <th>Nombre</th>
                 <th>Cantidad</th>
-                <th>Añadir / Reducir</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
-
             <%
                 List<String> miLista = BodegaManagment.getBodega().reporteInventario();
-                    for (String elemento : miLista) {
-                        String[] partes = elemento.split("\t");
+                for (String elemento : miLista) {
+                    String[] partes = elemento.split("\t");
             %>
-
             <tr>
                 <td><%= partes[0] %></td>
                 <td><%= partes[1] %></td>
                 <td><%= partes[2] %></td>
                 <td>
-                    <input type="text" id="number" class= "container-register" name="number" required aria-label="cant">
-                    <button type="submit" onclick="" class="btn-añadir">Añadir</button>
-                    <button type="submit" class="btn-reducir">Reducir</button>
+                    <!-- Formulario para añadir o reducir -->
+                    <form action="GestionarInventarioServlet" method="post" style="display:inline;">
+                        <input type="hidden" name="codigo" value="<%= partes[0] %>">
+                        <input type="number" name="cantidad" min="1" placeholder="Cantidad" required>
+                        <button type="submit" name="accion" value="añadir" class="btn-añadir">Añadir</button>
+                        <button type="submit" name="accion" value="reducir" class="btn-reducir">Reducir</button>
+                    </form>
+                    <!-- Formulario para eliminar -->
+                    <form action="GestionarInventarioServlet" method="post" style="display:inline;">
+                        <input type="hidden" name="codigo" value="<%= partes[0] %>">
+                        <button type="submit" name="accion" value="eliminar" class="btn-eliminar">Eliminar</button>
+                    </form>
                 </td>
             </tr>
-            <%
-                    } %>
+            <% } %>
             </tbody>
         </table>
+
+        <!-- Botón para añadir un nuevo producto -->
+        <form action="GestionarInventarioServlet" method="post">
+            <h2>Añadir Nuevo Producto</h2>
+            <input type="number" name="codigo" placeholder="Código del Producto" required>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="number" name="cantidad" placeholder="Cantidad" required>
+            <input type="number" name="precio" placeholder="Precio" required>
+            <input type="text" name="url_img" placeholder="URL Imagen" required>
+            <button type="submit" name="accion" value="añadirProducto" class="btn-añadir">Añadir Producto</button>
+        </form>
+
+
     </div>
 </main>
+
 <jsp:include page="component/footer.jsp" />
 </body>
 </html>

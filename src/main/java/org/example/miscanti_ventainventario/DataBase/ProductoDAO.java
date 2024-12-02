@@ -14,9 +14,9 @@ public class ProductoDAO {
     private static final String USUARIO = "root";
     private static final String CONTRASENA = "";
 
-    // Método para añadir un producto en la base de datos
+    // Metodo para añadir un producto en la base de datos
     public boolean anadirProducto(Producto producto) {
-        String sql = "INSERT INTO productos (codigo, nombre, cantidad, precio) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO productos (codigo, nombre, cantidad, precio, descipcion) VALUES (?, ?, ?, ?, ?)";
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
              PreparedStatement stmt = conexion.prepareStatement(sql)) {
 
@@ -24,6 +24,7 @@ public class ProductoDAO {
             stmt.setString(2, producto.getNombre());
             stmt.setInt(3, producto.getCantidad());
             stmt.setInt(4, producto.getPrecio());
+            stmt.setString(5, producto.getDescipcion()); // Nuevo campo
 
             int filasInsertadas = stmt.executeUpdate();
             return filasInsertadas > 0; // Retorna true si se insertó al menos una fila
@@ -34,27 +35,28 @@ public class ProductoDAO {
         }
     }
 
-    // Método para actualizar un producto existente en la base de datos
-    public boolean actualizarProducto(int codigo, String nuevoNombre, int nuevaCantidad, int nuevoPrecio) {
-        String sql = "UPDATE productos SET nombre = ?, cantidad = ?, precio = ? WHERE codigo = ?";
-        try (Connection conexion = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
-             PreparedStatement ps = conexion.prepareStatement(sql)) {
 
-            // Configurar los parámetros
+    // Metodo para actualizar un producto existente en la base de datos
+    public boolean actualizarProducto(int codigo, String nuevoNombre, int nuevaCantidad, int nuevoPrecio, String nuevaDescipcion) {
+        String query = "UPDATE productos SET nombre = ?, cantidad = ?, precio = ?, descipcion = ? WHERE codigo = ?";
+        try (Connection conexion = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+             PreparedStatement ps = conexion.prepareStatement(query)) {
+
             ps.setString(1, nuevoNombre);
             ps.setInt(2, nuevaCantidad);
             ps.setInt(3, nuevoPrecio);
-            ps.setInt(4, codigo);
+            ps.setString(4, nuevaDescipcion); // Nuevo campo
+            ps.setInt(5, codigo);
 
-            // Ejecutar la actualización
             int filasAfectadas = ps.executeUpdate();
-            return filasAfectadas > 0; // Retorna true si se actualizó al menos una fila
+            return filasAfectadas > 0;
 
         } catch (SQLException e) {
             System.err.println("Error al actualizar el producto: " + e.getMessage());
             return false;
         }
     }
+
 
     public boolean eliminarProducto(int codigo) {
         String sql = "DELETE FROM productos WHERE codigo = ?";

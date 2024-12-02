@@ -34,8 +34,7 @@ html, body {
 /* ===================== */
 /* Header Styles         */
 /* ===================== */
-
-.cart-icon-img{
+.cart-icon-img {
     height: 30px;
     width: 30px; /* Uniform size */
     object-fit: cover; /* Ensure proper scaling */
@@ -93,7 +92,7 @@ html, body {
     object-fit: cover; /* Ensure proper scaling */
 }
 
-.header-account-btn{
+.header-account-btn {
     display: flex;
     align-items: center; /* Ensures vertical alignment */
     gap: 10px;
@@ -130,13 +129,13 @@ html, body {
     background-color: #2e5c8b;
 }
 
-.header-icons{
+.header-icons {
     display: flex;
     justify-content: flex-end;
     gap: 15px;
 }
 
-.cart-btn{
+.cart-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,7 +173,7 @@ html, body {
 }
 
 /* ===================== */
-/* Index Section Styles   */
+/* Index Section Styles  */
 /* ===================== */
 main {
     flex: 1;
@@ -305,7 +304,6 @@ footer {
 /* Account Page Styles   */
 /* ===================== */
 
-/* Contenedor principal */
 .account-container {
     margin: 40px auto;
     background-color: #fff;
@@ -315,12 +313,11 @@ footer {
     max-width: 1200px; /* Aumento del ancho máximo */
     font-family: 'Arial', sans-serif;
     display: flex;
-    flex-direction: column; /* Asegura que las secciones se apilen verticalmente */
+    flex-direction: column;
     gap: 20px; /* Espaciado entre las secciones */
-    height: 100%; /* Garantiza que el contenedor ocupe todo el espacio disponible */
+    height: 100%;
 }
 
-/* Sección de información del usuario */
 .user-info {
     padding: 20px;
     border: 1px solid #e0e0e0;
@@ -330,686 +327,270 @@ footer {
     font-size: 1rem;
     line-height: 1.6;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1; /* Permite que esta sección ocupe el espacio restante */
-    max-width: 100%; /* Asegura que ocupe el ancho completo disponible */
+    flex: 1;
+    max-width: 100%;
 }
 
-/* Títulos dentro de la información */
 .user-info h2 {
     font-size: 1.5rem;
     color: #345f8a;
     margin-bottom: 15px;
-    border-bottom: 2px solid #008fc7;
-    padding-bottom: 5px;
 }
 
-/* Sección de acciones */
-.actions {
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 100%; /* Asegura que ocupe el ancho completo disponible */
+.user-info p {
+    margin: 10px 0;
 }
 
-/* Lista de acciones */
-.actions ul {
-    display: flex;
-    flex-direction: row;
-    gap: 35px;
-    padding: 0;
-    list-style-type: none;
-}
-
-/* Botones de acción */
-.actions ul li a {
-    padding: 15px 20px;
-    background-color: #008fc7;
-    color: white;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.actions ul li a:hover {
-    background-color: #005f87;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Sección de logout */
-.logout-section {
-    display: flex; /* Activa Flexbox */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    margin-top: auto; /* Empuja la sección de logout hacia abajo */
-    padding: 20px 0; /* Espaciado opcional dentro de la sección */
-}
-
-/* Estilo del enlace de logout */
-.logout-section a {
-    font-size: 1.2rem;
-    color: #008fc7;
-    font-weight: bold;
-    border: 2px solid #008fc7;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-}
-
-.logout-section a:hover {
-    background-color: #008fc7;
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* Diseño responsivo */
-@media (max-width: 768px) {
-    .account-container {
-        flex-direction: column; /* Columnas apiladas en pantallas pequeñas */
-    }
-
-    .user-info, .actions {
-        max-width: 100%; /* Ocupan todo el ancho */
-    }
-}
-/* ===================== */
-/* Login Page Styles     */
-/* ===================== */
-
-/* Contenedor principal */
-.container-login {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-}
-
-/* Título de la página */
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #008fc7;
-}
-
-/* Estilo de los campos del formulario */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #555;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #008fc7;
-}
-
-/* Estilo del botón de ingresar */
-button[type="submit"] {
-    padding: 10px;
-    font-size: 1.1rem;
-    background-color: #008fc7;
-    color: white;
+.user-info button {
+    padding: 0.5rem 1rem;
     border: none;
+    background-color: #008fc7;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
-    background-color: #005f87;
-    transform: translateY(-2px);
+.user-info button:hover {
+    background-color: #25486a;
 }
 
-/* Estilo de los mensajes de error */
-.error-message {
-    color: red;
-    font-size: 1rem;
-    text-align: center;
-}
-
-/* Enlace para recuperar la contraseña */
-.forgot-password {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.forgot-password a {
-    color: #008fc7;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-/* Enlace para registrarse */
-.register-link {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.register-link p {
-    font-size: 1rem;
-}
-
-.register-link a {
-    color: #008fc7;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-/* Diseño responsivo */
-@media (max-width: 480px) {
-    .container-login {
-        width: 90%;
-    }
-}
-
-/* ===================== */
-/* Register Page Styles  */
-/* ===================== */
-
-/* Contenedor principal */
-.container-register {
-    max-width: 420px;
-    width: 100%;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    margin: auto;
-}
-
-/* Título de la página */
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 25px;
-    color: #007bba;
-    font-weight: bold;
-}
-
-/* Estilo de los campos del formulario */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #007bba;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 186, 0.25);
-    outline: none;
-}
-
-/* Estilo del botón de registro */
-button[type="submit"] {
-    padding: 12px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: #007bba;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #005f87;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-button[type="submit"]:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-/* Estilo de los mensajes de error */
-.error-message {
-    color: #ff4d4d;
-    font-size: 1rem;
-    text-align: center;
-    font-weight: bold;
-    margin-top: -10px;
-}
-
-/* Enlace para iniciar sesión */
-.login-link {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.login-link p {
-    font-size: 1rem;
-    color: #666;
-}
-
-.login-link a {
-    color: #007bba;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-/* Diseño responsivo */
-@media (max-width: 480px) {
-    .container-register {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    label {
-        font-size: 0.9rem;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        padding: 10px;
-        font-size: 0.95rem;
-    }
-
-    button[type="submit"] {
-        font-size: 1rem;
-    }
-}
-
-/* ============================= */
-/* Estilos para el Carrito       */
-/* ============================= */
-
-/* Contenedor principal */
-
-.cart-container {
-    max-width: 1100px;
-    margin: 40px auto;
+.account-orders {
     padding: 20px;
-    background-color: white;
+    background-color: #e5f2f9;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.cart-container h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
+.account-orders h3 {
+    font-size: 1.4rem;
     color: #008fc7;
 }
 
-.cart-container h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-}
-
-/* Tabla */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-thead {
-    background-color: #008fc7;
-    color: white;
-    text-align: left;
-}
-
-thead th {
+.order-item {
     padding: 10px;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-tbody td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size: 0.95rem;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.empty-cart {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #999;
-}
-
-/* Resumen del carrito */
-
-.cart-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-top: 2px solid #ddd;
-}
-
-.cart-summary h3 {
-    font-size: 1.5rem;
-    color: #333;
-}
-
-/* Botones */
-
-button, .btn-pagar {
-    background-color: #008fc7;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover, .btn-pagar:hover {
-    background-color: #005f87;
-    transform: translateY(-2px);
-}
-
-.btn-eliminar {
-    background-color: #e63946;
-}
-.btn-añadir {
-    background-color: #e63946;
-}
-.btn-reducir {
-    background-color: #e63946;
-}
-
-.btn-eliminar:hover {
-    background-color: #b02432;
-}
-
-/* Diseño responsivo */
-@media (max-width: 768px) {
-    .cart-container {
-        width: 90%;
-    }
-
-    .cart-summary {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    table, tbody, tr, td, th {
-        display: block;
-        text-align: left;
-    }
-
-    tbody td {
-        border: none;
-        padding: 5px 0;
-    }
-
-    tbody tr {
-        margin-bottom: 15px;
-    }
-}
-
-/* ===================== */
-/* Inventory Page Styles */
-/* ===================== */
-
-/* Título principal */
-.inventory-h1 {
-    margin-top: 20px;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #007bba;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Tabla de inventario */
-.inventory-table {
-    max-width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 30px;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-/* Encabezado de la tabla */
-.inventory-table thead {
-    background-color: #007bba;
-    color: #ffffff;
-}
-
-.inventory-table thead th {
-    padding: 15px;
-    font-size: 1rem;
-    text-align: left;
-    font-weight: bold;
-}
-
-/* Filas del cuerpo */
-.inventory-table tbody tr {
     border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s ease;
 }
 
-.inventory-table tbody tr:hover {
-    background-color: #f0f9ff;
-}
-
-.inventory-table tbody td {
-    padding: 12px 15px;
-    font-size: 0.95rem;
-    color: #555;
-    text-align: left;
-}
-
-/* Última fila sin borde */
-.inventory-table tbody tr:last-child {
+.order-item:last-child {
     border-bottom: none;
 }
 
-/* Diseño responsivo */
-@media (max-width: 480px) {
-    .inventory-table {
-        width: 100%;
-        font-size: 0.9rem;
-    }
-
-    .inventory-h1 {
-        font-size: 1.5rem;
-    }
+.order-item p {
+    font-size: 1rem;
+    color: #444;
 }
 
-/* ===================== */
-/*  User's Page Styles   */
-/* ===================== */
-
-/* Contenedor principal */
-.container-manage-user {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-top: 50px;
-}
-
-/* Estilo para la tabla */
-table.managment-user-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table.managment-user-table th,
-table.managment-user-table td {
-    padding: 12px 15px;
-    text-align: left;
-}
-
-table.managment-user-table th {
-    background-color: #007bba;
-    color: #fff;
-    font-weight: bold;
-}
-
-table.managment-user-table td {
-    border-top: 1px solid #ddd;
-    background-color: #f9f9f9;
-}
-
-table.managment-user-table tr:nth-child(even) td {
-    background-color: #f1f1f1;
-}
-
-table.managment-user-table select {
-    padding: 8px;
-    width: 120px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-/* Botón de envío */
-button[type="submit"] {
-    background-color: #007bba;
+.order-item button {
+    padding: 6px 12px;
+    background-color: #008fc7;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
-button[type="submit"]:hover {
-    background-color: #005f87;
+.order-item button:hover {
+    background-color: #2e5c8b;
+}
+/* ===================== */
+/* Responsive Styles     */
+/* ===================== */
+
+/* Small screen devices (phones) */
+@media (max-width: 600px) {
+    .header-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .producto {
+        flex-direction: column;
+    }
+
+    .productos {
+        grid-template-columns: 1fr; /* Display products in a single column */
+    }
+
+    .producto img {
+        max-width: 100%;
+    }
+
+    .cart-btn {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .header-secondary {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-products {
+        justify-content: center;
+    }
+}
+
+/* Medium screen devices (tablets) */
+@media (min-width: 600px) and (max-width: 900px) {
+    .header-main {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .productos {
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
+
+    .producto {
+        flex-direction: column;
+    }
+
+    .cart-btn {
+        flex-direction: row;
+    }
+
+    .header-nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+/* Large screen devices (desktops) */
+@media (min-width: 900px) {
+    .header-main {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .productos {
+        grid-template-columns: repeat(3, 1fr); /* Three columns */
+    }
+
+    .producto {
+        flex-direction: column;
+    }
+
+    .cart-btn {
+        flex-direction: row;
+    }
+
+    .header-nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .account-container {
+        max-width: 900px; /* Limiting the width for larger screens */
+    }
 }
 
 /* ===================== */
-/* Password Page Styles  */
+/* Forms Styles          */
 /* ===================== */
-
-/* Contenedor para la página de cambio de contraseña */
-.container-change-password {
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
 }
 
-h1 {
-    color: #007bba;
-    text-align: center;
-    margin-bottom: 20px;
+form input,
+form select,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
-/* Estilos para los campos de formulario */
-.form-group {
-    margin-bottom: 15px;
-    margin-right: 20px;
+form button {
+    background-color: #008fc7;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-label {
-    display: block;
-    font-weight: bold;
+form button:hover {
+    background-color: #25486a;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #008fc7;
+}
+
+form label {
+    font-size: 1rem;
+    color: #333;
     margin-bottom: 5px;
 }
 
-input[type="text"], input[type="password"] {
-    flex: 1 1 auto;
-    margin-right: 10px;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+/* ===================== */
+/* Animation Styles      */
+/* ===================== */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-button[type="submit"] {
-    background-color: #007bba;
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+/* ===================== */
+/* Scroll to Top Button  */
+/* ===================== */
+
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #008fc7;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    opacity: 0;
+    visibility: hidden;
 }
 
-button[type="submit"]:hover {
-    background-color: #005f87;
+.scroll-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #25486a;
+}
+
+.scroll-to-top-btn:focus {
+    outline: none;
 }

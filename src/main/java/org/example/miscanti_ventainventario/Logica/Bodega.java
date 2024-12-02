@@ -91,4 +91,46 @@ public class Bodega {
         return solicitud.toArray(new String[solicitud.size()]);
     }
 
+    public ArrayList<Producto> getListaProducto() {
+        return listaProducto;
+    }
+
+    public void setListaProducto(ArrayList<Producto> listaProducto) {
+        this.listaProducto = listaProducto;
+    }
+
+    public void aumentarStock(int codigo, int cantidad) {
+        Producto producto = buscarProducto(codigo);
+        if (producto != null) {
+            producto.setCantidad(producto.getCantidad() + cantidad);
+        }
+    }
+
+    public void reducirStock(int codigo, int cantidad) {
+        Producto producto = buscarProducto(codigo);
+        if (producto != null) {
+            producto.setCantidad(Math.max(0, producto.getCantidad() - cantidad)); // Evita cantidades negativas
+        }
+    }
+
+    private Producto buscarProducto(int codigo) {
+        for(Producto producto: listaProducto){
+            if (producto.getCodigo() == codigo){
+                return producto;
+            }
+        }
+        return null;
+    }
+
+    public double getProductPrice(String productId) {
+        Producto poducto = buscarProducto(Integer.parseInt(productId));
+        assert poducto != null;
+        return poducto.getPrecio();
+    }
+
+    public String getProductName(String productId) {
+        Producto poducto = buscarProducto(Integer.parseInt(productId));
+        assert poducto != null;
+        return poducto.getNombre();
+    }
 }
