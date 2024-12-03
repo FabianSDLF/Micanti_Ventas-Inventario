@@ -1,11 +1,3 @@
-<%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
-<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %><%--
-  Created by IntelliJ IDEA.
-  User: sapul
-  Date: 20-11-2024
-  Time: 22:29
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
@@ -32,18 +24,20 @@
         for (Producto producto : productos) {
           if (producto.getCantidad() > 20) {
     %>
-    <article class="producto">
-      <img src="<%=producto.getUrl_img()%>" alt="<%= producto.getNombre() %>">
-      <h3><%= producto.getNombre() %></h3>
-      <p><%= producto.getDescipcion() %></p>
-      <strong>$<%= producto.getPrecio() %></strong>
-      <div class="cantidad-control">
-        <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, false)">-</button>
-        <input type="number" id="quantity-<%= producto.getCodigo() %>" value="1" min="0">
-        <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, true)">+</button>
-      </div>
-      <button onclick="addToCart(<%= producto.getCodigo() %>)">Añadir al carrito</button>
-    </article>
+    <form action="AgregarAlCarrito" method="post">
+      <article class="producto">
+        <img src="<%=producto.getUrl_img()%>" alt="<%= producto.getCodigo() %>">
+        <h3><%= producto.getNombre() %></h3>
+        <p><%= producto.getDescipcion() %></p>
+        <strong>$<%= producto.getPrecio() %></strong>
+        <div class="cantidad-control">
+          <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, false)">-</button>
+          <input type="number" id="quantity-<%= producto.getCodigo() %>" value="1" min="0">
+          <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, true)">+</button>
+        </div>
+        <button type="submit">Añadir al carrito</button>
+      </article>
+    </form>
     <%
         }
       }
@@ -58,4 +52,5 @@
 <script src="${pageContext.request.contextPath}/scripts.js"></script>
 </body>
 </html>
+
 

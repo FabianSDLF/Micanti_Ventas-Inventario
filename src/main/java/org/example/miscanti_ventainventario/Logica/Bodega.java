@@ -33,7 +33,7 @@ public class Bodega {
      * @return Optional
      * @author Benjamín Villa
      */
-    public Optional<Producto> consultarProducto(int codigo){
+    public Optional consultarProducto(int codigo){
         for(Producto producto: listaProducto){
             if (producto.getCodigo() == codigo){
                 return Optional.of(producto);
@@ -70,7 +70,7 @@ public class Bodega {
             fila = producto.getCodigo() + "\t" + producto.getNombre() + "\t" + producto.getCantidad() + "\t"+ producto.getPrecio();
             reporte.add(fila);
         }
-        if (reporte.isEmpty()){
+        if (reporte.size() == 0){
             reporte.add("La bodega está vacía.");
             return reporte;
         }
