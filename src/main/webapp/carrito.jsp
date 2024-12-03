@@ -11,13 +11,17 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <header>
   <jsp:include page="component/header.jsp" />
 </header>
+
 <main>
   <div class="cart-container">
     <h1>Tu Carrito</h1>
     <h2>Productos en tu carrito</h2>
+
+    <!-- Formulario para el pago -->
     <form action="descargarBoleta" method="POST">
       <table>
         <thead>
@@ -27,6 +31,7 @@
           <th>Cantidad</th>
           <th>Precio</th>
           <th>Total</th>
+          <th>Eliminar</th>
         </tr>
         </thead>
         <tbody>
@@ -58,6 +63,13 @@
             <input type="hidden" name="total_<%= producto.getCodigo() %>" value="<%= subtotal %>" />
             $<%= subtotal %>
           </td>
+          <td>
+            <!-- Formulario para eliminar -->
+            <form action="svEliminarProdCarrito" method="POST" style="display:inline;">
+              <input type="hidden" name="codigoProducto" value="<%= producto.getCodigo() %>" />
+              <button type="submit" id="eliminarBtn">Eliminar</button>
+            </form>
+          </td>
         </tr>
         <%
           }
@@ -65,24 +77,24 @@
         <tr>
           <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
           <td><strong>$<%= total %></strong></td>
+          <td></td>
         </tr>
         <%
         } else {
         %>
         <tr>
-          <td colspan="5" style="text-align: center;">Tu carrito está vacío.</td>
+          <td colspan="6" style="text-align: center;">Tu carrito está vacío.</td>
         </tr>
         <% } %>
         </tbody>
       </table>
-
-      <!-- Botón de enviar todo -->
       <div style="text-align: center;">
         <button type="submit" id="pagarBtn">Pagar</button>
       </div>
     </form>
   </div>
 </main>
+
 <jsp:include page="component/footer.jsp" />
 </body>
 </html>
