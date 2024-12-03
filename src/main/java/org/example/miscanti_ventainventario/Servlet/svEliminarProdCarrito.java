@@ -14,10 +14,12 @@ public class svEliminarProdCarrito extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codigoProduc = Integer.parseInt(request.getParameter("codigoProducto"));
+        //Obtener el carrito de la sesion
         HttpSession session = request.getSession();
         List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
 
         if (carrito!=null)
+            //Busca y elimina
             carrito.removeIf(producto -> producto.getCodigo() == codigoProduc);
         //Redirige al carrito
         response.sendRedirect("carrito.jsp");

@@ -1,3 +1,11 @@
+<%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %><%--
+  Created by IntelliJ IDEA.
+  User: sapul
+  Date: 20-11-2024
+  Time: 22:29
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
@@ -50,5 +58,4 @@
 <script src="${pageContext.request.contextPath}/scripts.js"></script>
 </body>
 </html>
-
 
