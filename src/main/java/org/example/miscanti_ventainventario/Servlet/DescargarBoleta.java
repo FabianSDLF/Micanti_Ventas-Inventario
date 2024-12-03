@@ -18,7 +18,7 @@ import java.util.List;
 public class DescargarBoleta extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         // Configura el encabezado para la descarga
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=\"boleta.pdf\"");

@@ -1,9 +1,4 @@
 package org.example.miscanti_ventainventario.Logica;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-
 public class Boleta {
 
     public static String print(String[] texto) {

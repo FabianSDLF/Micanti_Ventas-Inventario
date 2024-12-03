@@ -1,5 +1,3 @@
-<%@ page import="java.util.List" %>
-<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
