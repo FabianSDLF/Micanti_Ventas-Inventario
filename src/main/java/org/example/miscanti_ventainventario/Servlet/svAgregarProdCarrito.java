@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.example.miscanti_ventainventario.Logica.Producto;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,29 +16,33 @@ public class svAgregarProdCarrito extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener atributos del producto desde el formulario
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nombre = request.getParameter("nombre");
         int precio = Integer.parseInt(request.getParameter("precio"));
         int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+        HttpSession session = request.getSession();
+        List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
 
-        System.out.println(cantidad);
-        // Crear el producto
-        Producto producto = new Producto(cantidad, codigo, nombre, precio);
-
-        // Obtener el carrito de la sesión
-        List<Producto> carrito = (List<Producto>) request.getSession().getAttribute("carrito");
         if (carrito == null) {
             carrito = new ArrayList<>();
         }
 
-        // Añadir el producto al carrito
-        carrito.add(producto);
+        // Verificar si el producto ya existe en el carrito
+        boolean productoEncontrado = false;
+        for (Producto producto : carrito) {
+            if (producto.getCodigo() == codigo) {
+                producto.setCantidad(producto.getCantidad() + cantidad);
+                productoEncontrado = true;
+                break;
+            }
+        }
 
+        // Si no está en el carrito, agregarlo
+        if (!productoEncontrado)
+            carrito.add(new Producto(cantidad, codigo, nombre, precio));
         // Guardar el carrito en la sesión
-        request.getSession().setAttribute("carrito", carrito);
-
+        session.setAttribute("carrito", carrito);
         // Redirigir a la página de productos
-        response.sendRedirect("productos.jsp");
+        response.sendRedirect("productos.jsp?success=true");
     }
 }
