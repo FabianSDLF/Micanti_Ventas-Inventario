@@ -1,14 +1,13 @@
 package org.example.miscanti_ventainventario.Logica;
 public class Producto {
     private int cantidad, codigo, precio;
-    private String nombre, descipcion, url_img;
-    public Producto(int cantidad, int codigo, String nombre, int precio, String url_img) {
+    private String nombre, descipcion;
+    public Producto(int cantidad, int codigo, String nombre, int precio) {
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
         descipcion = "";
-        this.url_img = url_img;
     }
 
     public int getCantidad() {
@@ -48,13 +47,5 @@ public class Producto {
 
     public void setDescipcion(String descipcion) {
         this.descipcion = descipcion;
-    }
-
-    public String getUrl_img() {
-        return url_img;
-    }
-
-    public void setUrl_img(String url_img) {
-        this.url_img = url_img;
     }
 }

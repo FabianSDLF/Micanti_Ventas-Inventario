@@ -33,7 +33,7 @@ public class Bodega {
      * @return Optional
      * @author Benjamín Villa
      */
-    public Optional consultarProducto(int codigo){
+    public Optional<Producto> consultarProducto(int codigo){
         for(Producto producto: listaProducto){
             if (producto.getCodigo() == codigo){
                 return Optional.of(producto);
@@ -70,7 +70,7 @@ public class Bodega {
             fila = producto.getCodigo() + "\t" + producto.getNombre() + "\t" + producto.getCantidad() + "\t"+ producto.getPrecio();
             reporte.add(fila);
         }
-        if (reporte.size() == 0){
+        if (reporte.isEmpty()){
             reporte.add("La bodega está vacía.");
             return reporte;
         }
@@ -91,7 +91,7 @@ public class Bodega {
         return solicitud.toArray(new String[solicitud.size()]);
     }
 
-    public ArrayList<Producto> getListaProducto() {
+    public List<Producto> getListaProductos(){
         return listaProducto;
     }
 
@@ -133,4 +133,5 @@ public class Bodega {
         assert poducto != null;
         return poducto.getNombre();
     }
+
 }

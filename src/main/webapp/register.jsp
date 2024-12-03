@@ -20,37 +20,34 @@
 </head>
 <body>
 <div class="container-register">
-    <div>
-        <h1>Crear una cuenta</h1>
-        <form action="registro" method="POST" onsubmit="validarFormulario(event)">
-            <label for="nickName">Nombre de usuario:</label>
-            <input type="text" id="nickName" name="nickName" required placeholder="Ejemplo: usuario123" maxlength="20">
+    <h1>Crear una cuenta</h1>
+    <form action="registro" method="POST" onsubmit="validarFormulario(event)">
+        <label for="nickName">Nombre de usuario:</label>
+        <input type="text" id="nickName" name="nickName" required placeholder="Ejemplo: usuario123" maxlength="20">
 
-            <label for="primerNombre">Primer Nombre:</label>
-            <input type="text" id="primerNombre" name="primerNombre" required placeholder="Tu primer nombre">
+        <label for="primerNombre">Primer Nombre:</label>
+        <input type="text" id="primerNombre" name="primerNombre" required placeholder="Tu primer nombre">
 
-            <label for="segundoNombre">Segundo Nombre:</label>
-            <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Opcional">
+        <label for="segundoNombre">Segundo Nombre:</label>
+        <input type="text" id="segundoNombre" name="segundoNombre" placeholder="Opcional">
 
-            <label for="apellidoPaterno">Apellido Paterno:</label>
-            <input type="text" id="apellidoPaterno" name="apellidoPaterno" required placeholder="Tu apellido paterno">
+        <label for="apellidoPaterno">Apellido Paterno:</label>
+        <input type="text" id="apellidoPaterno" name="apellidoPaterno" required placeholder="Tu apellido paterno">
 
-            <label for="apellidoMaterno">Apellido Materno:</label>
-            <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Opcional">
+        <label for="apellidoMaterno">Apellido Materno:</label>
+        <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Opcional">
 
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
 
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="contrasena" required minlength="6" placeholder="Mínimo 6 caracteres">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required minlength="6" placeholder="Mínimo 6 caracteres">
 
-            <label for="confirmarContrasena">Confirmar Contraseña:</label>
-            <input type="password" id="confirmarContrasena" name="confirmarContrasena" required minlength="6" placeholder="Repite la contraseña">
+        <label for="confirmarContrasena">Confirmar Contraseña:</label>
+        <input type="password" id="confirmarContrasena" name="confirmarContrasena" required minlength="6" placeholder="Repite la contraseña">
 
-            <button type="submit">Registrar</button>
-        </form>
-    </div>
-
+        <button type="submit">Registrar</button>
+    </form>
 
     <%-- Mensajes de error dinámicos del backend --%>
     <p class="error-message">

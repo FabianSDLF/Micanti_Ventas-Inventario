@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/AgregarAlCarrito")
+@WebServlet("/svAgregarAlCarrito")
 public class svAgregarProdCarrito extends HttpServlet {
 
     @Override
@@ -20,11 +20,10 @@ public class svAgregarProdCarrito extends HttpServlet {
         String nombre = request.getParameter("nombre");
         int precio = Integer.parseInt(request.getParameter("precio"));
         int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-        String urlImg = request.getParameter("url-img");
 
         System.out.println(cantidad);
         // Crear el producto
-        Producto producto = new Producto(cantidad, codigo, nombre, precio, urlImg);
+        Producto producto = new Producto(cantidad, codigo, nombre, precio);
 
         // Obtener el carrito de la sesión
         List<Producto> carrito = (List<Producto>) request.getSession().getAttribute("carrito");

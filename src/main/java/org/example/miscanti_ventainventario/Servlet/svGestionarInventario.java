@@ -78,7 +78,7 @@ public class svGestionarInventario extends HttpServlet {
                 }
 
                 // Crear el producto con los parámetros del formulario
-                Producto nuevoProducto = new Producto(cantidad, codigo, nombre, precio, urlImg);
+                Producto nuevoProducto = new Producto(cantidad, codigo, nombre, precio);
                 bodega.agregarProducto(nuevoProducto);
                 break;
         }

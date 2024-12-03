@@ -1,7 +1,12 @@
+<%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %><%--
+  Created by IntelliJ IDEA.
+  User: sapul
+  Date: 20-11-2024
+  Time: 22:29
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.List" %>
-<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
-<%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,46 +16,36 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <jsp:include page="component/header.jsp"></jsp:include>
 <main>
   <h1>Productos disponibles</h1>
   <h2>Explora nuestros productos</h2>
   <section class="productos">
     <%
-      // Obtén la lista de productos desde algún controlador o fuente
-      List<Producto> productos = BodegaManagment.getBodega().getListaProducto();
-      if (productos != null) {
-        for (Producto producto : productos) {
-          if (producto.getCantidad() > 20) {
+      Bodega bodega = (Bodega) application.getAttribute("bodega");
+      for (Producto producto : bodega.getListaProductos()) {
     %>
-    <form action="AgregarAlCarrito" method="post">
-      <article class="producto">
-        <img src="<%=producto.getUrl_img()%>" alt="<%= producto.getCodigo() %>">
-        <h3><%= producto.getNombre() %></h3>
-        <p><%= producto.getDescipcion() %></p>
-        <strong>$<%= producto.getPrecio() %></strong>
+    <article class="producto">
+      <img src="${pageContext.request.contextPath}/images/producto<%= producto.getCodigo() %>.jpg" alt="<%= producto.getNombre() %>">
+      <h3><%= producto.getNombre() %></h3>
+      <p>Precio: $<%= producto.getPrecio() %></p>
+      <form action="svAgregarAlCarrito" method="post">
+        <input type="hidden" name="codigo" value="<%= producto.getCodigo() %>">
+        <input type="hidden" name="nombre" value="<%= producto.getNombre() %>">
+        <input type="hidden" name="precio" value="<%= producto.getPrecio() %>">
         <div class="cantidad-control">
           <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, false)">-</button>
-          <input type="number" id="quantity-<%= producto.getCodigo() %>" value="1" min="0">
+          <input type="number" id="quantity-<%= producto.getCodigo() %>" name="cantidad" value="1" min="1">
           <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, true)">+</button>
         </div>
         <button type="submit">Añadir al carrito</button>
-      </article>
-    </form>
-    <%
-        }
-      }
-    } else {
-    %>
-    <p>No hay productos disponibles.</p>
+      </form>
+    </article>
     <% } %>
   </section>
 </main>
 <jsp:include page="component/footer.jsp"></jsp:include>
-
 <script src="${pageContext.request.contextPath}/scripts.js"></script>
 </body>
 </html>
-
 
