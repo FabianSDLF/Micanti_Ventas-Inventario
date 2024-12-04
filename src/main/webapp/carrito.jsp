@@ -1,6 +1,7 @@
-<%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
+<% List<Producto> carrito = (List<Producto>) session.getAttribute("carrito"); %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <header>
   <jsp:include page="component/header.jsp" />
 </header>
@@ -17,56 +19,62 @@
   <div class="cart-container">
     <h1>Tu Carrito</h1>
     <h2>Productos en tu carrito</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Total</th>
-        <th>Acción</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <%
-        List<String> miLista = BodegaManagment.getBodega().reporteInventario();
-        if (miLista.get(0).equals("La bodega está vacía.")){
-          for (String elemento : miLista) {
-            String[] partes = elemento.split("\t");
-      %>
-
+    <form action="descargarBoleta" method="POST">
+      <table>
+        <thead>
         <tr>
-          <td><%= partes[1] %></td>
-          <td>0</td>
-          <td><%= partes[3] %></td>
-          <td><%= 0 * Integer.parseInt(partes[3]) %></td>
+          <th>Código</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+          <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+          if (carrito != null && !carrito.isEmpty()) {
+            int total = 0;
+            for (Producto producto : carrito) {
+              int subtotal = producto.getCantidad() * producto.getPrecio();
+              total += subtotal;
+        %>
+        <tr>
+          <td><%= producto.getCodigo() %></td>
+          <td><%= producto.getNombre() %></td>
+          <td><%= producto.getCantidad() %></td>
+          <td><%= producto.getPrecio() %></td>
+          <td><%= subtotal %></td>
           <td>
-            <form action="eliminarProductoCarrito" method="post" style="display:inline;">
-              <input type="hidden" name="idProducto" value="${producto.id}" />
-              <button type="submit" class="btn-eliminar">Eliminar</button>
-            </form>
+            <!-- Delete button for each product -->
+            <button type="submit" name="action" value="Delete_<%= producto.getCodigo() %>">Eliminar</button>
           </td>
         </tr>
-      <%
+        <%
           }
-      } else {
-      %>
+        %>
         <tr>
-          <td colspan="5" class="empty-cart">No hay productos en tu carrito.</td>
+          <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
+          <td><strong>$<%= total %></strong></td>
+          <td>
+            <!-- Payment button -->
+            <button type="submit" name="action" value="Pay">Pagar</button>
+          </td>
         </tr>
-      <%  } %>
-      </tbody>
-    </table>
-    <%-- Mostrar el total solo si hay productos --%>
-    <c:if test="${!productos.isEmpty()}">
-      <div class="cart-summary">
-        <h3>Total: $${total}</h3>
-        <button class="btn-pagar" onclick="location.href='pago.jsp'">Proceder al Pago</button>
-      </div>
-    </c:if>
+        <% } else { %>
+        <tr>
+          <td colspan="5" style="text-align: center;">Tu carrito está vacío.</td>
+        </tr>
+        <% } %>
+        </tbody>
+      </table>
+    </form>
   </div>
 </main>
-  <jsp:include page="component/footer.jsp" />
+<jsp:include page="component/footer.jsp" />
 </body>
 </html>
+
+
+
+

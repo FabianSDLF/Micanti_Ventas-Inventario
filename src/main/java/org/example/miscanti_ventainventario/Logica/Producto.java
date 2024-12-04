@@ -1,12 +1,13 @@
 package org.example.miscanti_ventainventario.Logica;
 public class Producto {
     private int cantidad, codigo, precio;
-    private String nombre;
+    private String nombre, descipcion;
     public Producto(int cantidad, int codigo, String nombre, int precio) {
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
+        descipcion = "";
     }
 
     public int getCantidad() {
@@ -39,5 +40,12 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public String getDescipcion() {
+        return descipcion;
+    }
+
+    public void setDescipcion(String descipcion) {
+        this.descipcion = descipcion;
     }
 }

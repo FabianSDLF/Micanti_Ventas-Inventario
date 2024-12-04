@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encabezado aCuenta</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles.css">
 
 </head>
 <body>
@@ -33,28 +33,28 @@
                 Productos
             </button>
 
-            <!-- Boton login -->
-            <button
-                    onclick="window.location.href='<%= session.getAttribute("username") != null ? "account.jsp" : "login.jsp" %>'"
-                    class="header-account-btn">
-                <div class="account-menu-icon">
-                    <!-- Imagen del ícono -->
-                    <img
-                            src="${pageContext.request.contextPath}/images/account_icon.png"
-                            alt="Cuenta"
-                            class="account-icon-img"/>
-                </div>
-                <div class="account-menu-content">
-                    <!-- Texto dinámico -->
-                    <span>
-                        ¡Hola, <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Inicia sesión" %>!
-                    </span>
-                </div>
-            </button>
-
-
-            <!-- Icono Carrito -->
+            <!-- Contenedor de iconos (login y carrito) alineados a la derecha -->
             <div class="header-icons">
+                <!-- Boton login -->
+                <button
+                        onclick="window.location.href='<%= session.getAttribute("username") != null ? "account.jsp" : "login.jsp" %>'"
+                        class="header-account-btn">
+                    <div class="account-menu-icon">
+                        <!-- Imagen del ícono -->
+                        <img
+                                src="${pageContext.request.contextPath}/images/account_icon.png"
+                                alt="Cuenta"
+                                class="account-icon-img"/>
+                    </div>
+                    <div class="account-menu-content">
+                        <!-- Texto dinámico -->
+                        <span>
+                            ¡Hola, <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Inicia sesión" %>!
+                        </span>
+                    </div>
+                </button>
+
+                <!-- Icono Carrito -->
                 <button class="cart-btn"
                         onclick="window.location.href='${pageContext.request.contextPath}/carrito.jsp'">
                     <img src="${pageContext.request.contextPath}/images/cart_icon.png" alt="Carrito"
@@ -62,7 +62,6 @@
                     Carrito
                 </button>
             </div>
-
 
         </div>
     </header>

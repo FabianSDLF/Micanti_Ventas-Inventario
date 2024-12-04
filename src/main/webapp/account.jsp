@@ -43,7 +43,6 @@
     <section class="actions">
         <h2>Opciones disponibles</h2>
         <ul>
-            <li><a href="order-history.jsp">Historial de pedidos</a></li>
             <li><a href="change-password.jsp">Cambiar contraseña</a></li>
             <% if (rol.equals("ADMINISTRADOR")) { %>
                 <li><a href="manage-users.jsp">Administrar usuarios</a></li>
