@@ -13,52 +13,66 @@ import org.example.miscanti_ventainventario.Logica.Producto;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
-@WebServlet(name = "descargarBoleta", urlPatterns = {"/descargarBoleta"})
+@WebServlet(name = "DescargarBoleta", urlPatterns = {"/descargarBoleta"})
 public class DescargarBoleta extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
-        // Comprobamos si la solicitud es para eliminar un producto
-        String eliminarBtn = request.getParameter("eliminarBtn");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
 
-        if (eliminarBtn != null) {
-            // Si se presionó el botón de eliminar, redirigimos a svEliminarProdCarrito
-            int codigoProducto = Integer.parseInt(request.getParameter("codigoProducto"));
-            HttpSession session = request.getSession();
-            List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+        if (action != null) {
+            if (action.startsWith("Delete_")) {
+                // Extract product code from the action value (e.g., Delete_123 -> 123)
+                int codigoProducto = Integer.parseInt(action.split("_")[1]);
 
-            // Eliminar el producto del carrito
-            if (carrito != null) {
-                carrito.removeIf(producto -> producto.getCodigo() == codigoProducto);
-            }
+                // Get the cart from the session
+                HttpSession session = request.getSession();
+                List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
 
-            // Redirigimos al carrito después de eliminar
-            response.sendRedirect("carrito.jsp"); // Cambia esta URL a la correspondiente
-        } else {
-            // Si no se presionó el botón de eliminar, seguimos con la lógica de pago
-            response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", "attachment; filename=\"boleta.pdf\"");
+                if (carrito != null) {
+                    // Remove the product from the cart based on the product code
+                    carrito.removeIf(producto -> producto.getCodigo() == codigoProducto);
+                    // Update the session with the modified cart
+                    session.setAttribute("carrito", carrito);
+                }
 
-            try (OutputStream os = response.getOutputStream()) {
-                // Generar el contenido del PDF
-                String nombre = request.getParameter("nombre");
-                int codigo = Integer.parseInt(request.getParameter("codigo"));
-                int cantidad = Integer.valueOf(request.getParameter("cantidad"));
-                int precio = Integer.valueOf(request.getParameter("precio"));
-                Bodega bodega = BodegaManagment.getBodega();
-                bodega.reducirStock(codigo, cantidad);
-                String[] out = new String[2];
-                out[0] = nombre + "\t" +  String.valueOf(cantidad) + "\t" +  String.valueOf(cantidad);
-                out[1] = String.valueOf(cantidad*precio);
-                String pdfContent = Boleta.print(out);
+                // Redirect to the updated cart page
+                response.sendRedirect("carrito.jsp");
+            } else if ("Pay".equals(action)) {
+                // Handle payment processing logic here
 
-                os.write(pdfContent.getBytes());
-            } catch (Exception e) {
-                e.printStackTrace();
+                // Generate the PDF for the boleta (invoice)
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"boleta.pdf\"");
+
+                try (OutputStream os = response.getOutputStream()) {
+                    // Retrieve all the products in the cart and prepare them for the boleta
+                    HttpSession session = request.getSession();
+                    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+
+                    if (carrito != null && !carrito.isEmpty()) {
+                        // Prepare the data for the boleta
+                        String[] out = new String[carrito.size()];
+                        int index = 0;
+                        int total = 0;
+                        for (Producto producto : carrito) {
+                            int subtotal = producto.getCantidad() * producto.getPrecio();
+                            total += subtotal;
+                            out[index] = producto.getNombre() + "\t" + producto.getCantidad() + "\t" + subtotal;
+                            index++;
+                        }
+
+                        // Generate the boleta PDF content
+                        String pdfContent = Boleta.print(out);
+
+                        // Write the PDF content to the response output stream
+                        os.write(pdfContent.getBytes());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

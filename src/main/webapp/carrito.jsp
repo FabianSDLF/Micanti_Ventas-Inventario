@@ -15,13 +15,10 @@
 <header>
   <jsp:include page="component/header.jsp" />
 </header>
-
 <main>
   <div class="cart-container">
     <h1>Tu Carrito</h1>
     <h2>Productos en tu carrito</h2>
-
-    <!-- Formulario para el pago -->
     <form action="descargarBoleta" method="POST">
       <table>
         <thead>
@@ -31,7 +28,7 @@
           <th>Cantidad</th>
           <th>Precio</th>
           <th>Total</th>
-          <th>Eliminar</th>
+          <th>Acción</th>
         </tr>
         </thead>
         <tbody>
@@ -43,32 +40,14 @@
               total += subtotal;
         %>
         <tr>
+          <td><%= producto.getCodigo() %></td>
+          <td><%= producto.getNombre() %></td>
+          <td><%= producto.getCantidad() %></td>
+          <td><%= producto.getPrecio() %></td>
+          <td><%= subtotal %></td>
           <td>
-            <input type="hidden" name="codigo_<%= producto.getCodigo() %>" value="<%= producto.getCodigo() %>" />
-            <%= producto.getCodigo() %>
-          </td>
-          <td>
-            <input type="hidden" name="nombre_<%= producto.getCodigo() %>" value="<%= producto.getNombre() %>" />
-            <%= producto.getNombre() %>
-          </td>
-          <td>
-            <input type="hidden" name="cantidad_<%= producto.getCodigo() %>" value="<%= producto.getCantidad() %>" />
-            <%= producto.getCantidad() %>
-          </td>
-          <td>
-            <input type="hidden" name="precio_<%= producto.getCodigo() %>" value="<%= producto.getPrecio() %>" />
-            $<%= producto.getPrecio() %>
-          </td>
-          <td>
-            <input type="hidden" name="total_<%= producto.getCodigo() %>" value="<%= subtotal %>" />
-            $<%= subtotal %>
-          </td>
-          <td>
-            <!-- Formulario para eliminar -->
-            <form action="svEliminarProdCarrito" method="POST" style="display:inline;">
-              <input type="hidden" name="codigoProducto" value="<%= producto.getCodigo() %>" />
-              <button type="submit" id="eliminarBtn">Eliminar</button>
-            </form>
+            <!-- Delete button for each product -->
+            <button type="submit" name="action" value="Delete_<%= producto.getCodigo() %>">Eliminar</button>
           </td>
         </tr>
         <%
@@ -77,24 +56,25 @@
         <tr>
           <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
           <td><strong>$<%= total %></strong></td>
-          <td></td>
+          <td>
+            <!-- Payment button -->
+            <button type="submit" name="action" value="Pay">Pagar</button>
+          </td>
         </tr>
-        <%
-        } else {
-        %>
+        <% } else { %>
         <tr>
-          <td colspan="6" style="text-align: center;">Tu carrito está vacío.</td>
+          <td colspan="5" style="text-align: center;">Tu carrito está vacío.</td>
         </tr>
         <% } %>
         </tbody>
       </table>
-      <div style="text-align: center;">
-        <button type="submit" id="pagarBtn">Pagar</button>
-      </div>
     </form>
   </div>
 </main>
-
 <jsp:include page="component/footer.jsp" />
 </body>
 </html>
+
+
+
+
