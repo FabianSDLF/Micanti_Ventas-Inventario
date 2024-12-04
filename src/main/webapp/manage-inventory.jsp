@@ -1,3 +1,5 @@
+<%@page import="org.example.miscanti_ventainventario.Logica.Producto"%>
+<%@page import="org.example.miscanti_ventainventario.DataBase.ProductoJpaController"%>
 <%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -28,25 +30,26 @@
                 </thead>
                 <tbody>
                 <%
-                    List<String> miLista = BodegaManagment.getBodega().reporteInventario();
-                    for (String elemento : miLista) {
-                        String[] partes = elemento.split("\t");
+                    ProductoJpaController jpa = new ProductoJpaController();
+                    
+                    List<Producto> miLista = jpa.findProductoEntities();
+                    for (Producto elemento : miLista) {
                 %>
                 <tr>
-                    <td><%= partes[0] %></td>
-                    <td><%= partes[1] %></td>
-                    <td><%= partes[2] %></td>
+                    <td><%= elemento.getCodigo() %></td>
+                    <td><%= elemento.getNombre() %></td>
+                    <td><%= elemento.getCantidad() %></td>
                     <td>
                         <!-- Formulario para añadir o reducir -->
                         <form action="GestionarInventarioServlet" method="post" style="display:inline;">
-                            <input type="hidden" name="codigo" value="<%= partes[0] %>">
+                            <input type="hidden" name="codigo" value="<%= elemento.getCodigo() %>">
                             <input type="number" name="cantidad" min="1" placeholder="Cantidad" required>
                             <button type="submit" name="accion" value="añadir" class="btn-añadir">Añadir</button>
                             <button type="submit" name="accion" value="reducir" class="btn-reducir">Reducir</button>
                         </form>
                         <!-- Formulario para eliminar -->
                         <form action="GestionarInventarioServlet" method="post" style="display:inline;">
-                            <input type="hidden" name="codigo" value="<%= partes[0] %>">
+                            <input type="hidden" name="codigo" value="<%= elemento.getCodigo() %>">
                             <button type="submit" name="accion" value="eliminar" class="btn-eliminar">Eliminar</button>
                         </form>
                     </td>
@@ -64,7 +67,6 @@
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="number" name="cantidad" placeholder="Cantidad" required>
                 <input type="number" name="precio" placeholder="Precio" required>
-                <input type="text" name="url_img" placeholder="URL Imagen" required>
                 <button type="submit" name="accion" value="añadirProducto" class="btn-añadir">Añadir Producto</button>
             </form>
         </div>

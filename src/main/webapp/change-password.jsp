@@ -1,5 +1,3 @@
-<%@ page import="org.example.miscanti_ventainventario.Logica.Usuario" %>
-<%@ page import="org.example.miscanti_ventainventario.Logica.UserManagment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">

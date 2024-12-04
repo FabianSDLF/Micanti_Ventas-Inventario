@@ -1,8 +1,7 @@
-
 package org.example.miscanti_ventainventario.Servlet;
 
+import org.example.miscanti_ventainventario.DataBase.UsuarioJpaController;
 import org.example.miscanti_ventainventario.Logica.Usuario;
-import org.example.miscanti_ventainventario.Logica.UserManagment;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -13,8 +12,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/cambiarContraseña")
 public class svCambiarContraseña extends HttpServlet {
+
+    private UsuarioJpaController usuarioJpaController = new UsuarioJpaController(); // Instancia de controlador JPA
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String usuario = request.getParameter("usuario");
+        String usuarioNick = request.getParameter("usuario");
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String confirmPassword = request.getParameter("confirmPassword");
@@ -26,15 +28,22 @@ public class svCambiarContraseña extends HttpServlet {
             return;
         }
 
-        // Verifica si el nombre de usuario y la contraseña actual son correctos
-        Usuario user = UserManagment.obtenerUsuario(usuario);
+        // Usar JPA para obtener el usuario
+        Usuario user = usuarioJpaController.findUsuario(usuarioNick);
+
         if (user != null && user.getContrasena().equals(oldPassword)) {
             // Cambiar la contraseña
             user.setContrasena(newPassword);
-            response.sendRedirect("account.jsp");  // Redirige a una página de perfil o éxito
+            try {
+                usuarioJpaController.edit(user);  // Usamos JPA para actualizar el usuario
+                response.sendRedirect("account.jsp");  // Redirige a una página de perfil o éxito
+            } catch (Exception e) {
+                request.setAttribute("error", "Hubo un error al actualizar la contraseña.");
+                request.getRequestDispatcher("/change-password.jsp").forward(request, response);
+            }
         } else {
             request.setAttribute("error", "Usuario o contraseña incorrectos.");
-            request.getRequestDispatcher("change-password.jsp").forward(request, response);
+            request.getRequestDispatcher("/change-password.jsp").forward(request, response);
         }
     }
 }

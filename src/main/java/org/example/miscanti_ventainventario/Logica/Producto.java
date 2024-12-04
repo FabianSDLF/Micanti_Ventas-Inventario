@@ -1,7 +1,22 @@
 package org.example.miscanti_ventainventario.Logica;
-public class Producto {
-    private int cantidad, codigo, precio;
-    private String nombre, descipcion;
+
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Producto implements Serializable {
+    @Id
+    private int codigo;
+    private int cantidad;
+    private int precio;
+    private String nombre;
+    private String descipcion;
+    
+    public Producto(){
+        
+    }
+    
     public Producto(int cantidad, int codigo, String nombre, int precio) {
         this.cantidad = cantidad;
         this.codigo = codigo;

@@ -1,6 +1,13 @@
 package org.example.miscanti_ventainventario.Logica;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
+    @Id
     private String nickName;
     private String primerNombre;
     private String segundoNombre;
@@ -8,7 +15,13 @@ public class Usuario {
     private String apellidoPaterno;
     private String correo;
     private String contrasena;
+    @Enumerated(EnumType.STRING)
     private Rol rol;
+    
+    public Usuario(){
+        
+    }
+    
     public Usuario(String nN,String pN, String sN, String pA, String sA, String C, String Con) {
         nickName = nN;
         primerNombre = pN;

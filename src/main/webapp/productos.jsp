@@ -1,3 +1,5 @@
+<%@page import="org.example.miscanti_ventainventario.DataBase.ProductoJpaController"%>
+<%@page import="java.util.List"%>
 <%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
 <%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %><%--
   Created by IntelliJ IDEA.
@@ -22,11 +24,12 @@
   <h2>Explora nuestros productos</h2>
   <section class="productos">
     <%
-      Bodega bodega = (Bodega) application.getAttribute("bodega");
-      for (Producto producto : bodega.getListaProductos()) {
+        ProductoJpaController jpa = new ProductoJpaController();
+      List<Producto> productos = jpa.findProductoEntities();
+      for (Producto producto : productos) {
+        if (producto.getCantidad() >= 20) {
     %>
     <article class="producto">
-      <img src="${pageContext.request.contextPath}/images/producto<%= producto.getCodigo() %>.jpg" alt="<%= producto.getNombre() %>">
       <h3><%= producto.getNombre() %></h3>
       <p>Precio: $<%= producto.getPrecio() %></p>
       <form action="svAgregarAlCarrito" method="post">
@@ -41,7 +44,9 @@
         <button type="submit">Añadir al carrito</button>
       </form>
     </article>
-    <% } %>
+    <% 
+        }
+       } %>
   </section>
 </main>
 <jsp:include page="component/footer.jsp"></jsp:include>

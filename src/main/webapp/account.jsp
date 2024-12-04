@@ -1,18 +1,23 @@
+<%@page import="org.example.miscanti_ventainventario.Logica.Usuario"%>
+<%@page import="org.example.miscanti_ventainventario.DataBase.UsuarioJpaController"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     // Obtiene la sesión actual, pero no la crea si no existe
     String username = (session != null) ? (String) session.getAttribute("username") : null;
 
-    // Redirige al login si el usuario no está autenticado
     if (username == null) {
         response.sendRedirect("login.jsp");
         return;
     }
+    UsuarioJpaController jpa = new UsuarioJpaController();
+    // Redirige al login si el usuario no está autenticado
+    Usuario user = jpa.findUsuarioByNickName(username);
+    
 
     // Puedes agregar información adicional aquí si lo necesitas, como el nombre completo, email, etc.
-    String fullName = (String) session.getAttribute("fullName"); // Ejemplo de nombre completo del usuario
-    String email = (String) session.getAttribute("email");// Ejemplo de correo electrónico del usuario
-    String rol = session.getAttribute("rol").toString();
+    String fullName = user.getFullName(); // Ejemplo de nombre completo del usuario
+    String email = user.getCorreo();// Ejemplo de correo electrónico del usuario
+    String rol = user.getRol().toString();
 %>
 <!DOCTYPE html>
 <html lang="es">

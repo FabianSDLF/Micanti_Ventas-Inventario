@@ -6,17 +6,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.miscanti_ventainventario.Logica.Bodega;
-import org.example.miscanti_ventainventario.Logica.BodegaManagment;
+import org.example.miscanti_ventainventario.DataBase.ProductoJpaController;
 import org.example.miscanti_ventainventario.Logica.Producto;
-
 
 @WebServlet("/GestionarInventarioServlet")
 public class svGestionarInventario extends HttpServlet {
+
+    private ProductoJpaController productoJpaController = new ProductoJpaController(); // Instancia del controlador JPA
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("accion");
-        Bodega bodega = BodegaManagment.getBodega();
 
         // Verificar si el parámetro 'codigo' está presente y no está vacío
         String codigoStr = request.getParameter("codigo");
@@ -36,7 +36,19 @@ public class svGestionarInventario extends HttpServlet {
                     return;
                 }
                 int cantidadAñadir = Integer.parseInt(cantidadStr);
-                bodega.aumentarStock(codigo, cantidadAñadir);
+                Producto productoAñadir = productoJpaController.findProducto(codigo);
+                if (productoAñadir != null) {
+                    // Aumentamos el stock del producto encontrado
+                    productoAñadir.setCantidad(productoAñadir.getCantidad() + cantidadAñadir);
+                    try {
+                        productoJpaController.edit(productoAñadir); // Actualizamos el producto
+                    } catch (Exception e) {
+                        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al actualizar el stock.");
+                        return;
+                    }
+                } else {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Producto no encontrado.");
+                }
                 break;
 
             case "reducir":
@@ -47,11 +59,33 @@ public class svGestionarInventario extends HttpServlet {
                     return;
                 }
                 int cantidadReducir = Integer.parseInt(cantidadReducirStr);
-                bodega.reducirStock(codigo, cantidadReducir);
+                Producto productoReducir = productoJpaController.findProducto(codigo);
+                if (productoReducir != null) {
+                    // Reducimos el stock del producto encontrado
+                    if (productoReducir.getCantidad() >= cantidadReducir) {
+                        productoReducir.setCantidad(productoReducir.getCantidad() - cantidadReducir);
+                        try {
+                            productoJpaController.edit(productoReducir); // Actualizamos el producto
+                        } catch (Exception e) {
+                            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al actualizar el stock.");
+                            return;
+                        }
+                    } else {
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "No hay suficiente stock para reducir.");
+                        return;
+                    }
+                } else {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Producto no encontrado.");
+                }
                 break;
 
             case "eliminar":
-                bodega.eliminarProducto(codigo);
+                try {
+                    productoJpaController.destroy(codigo); // Elimina el producto de la base de datos
+                } catch (Exception e) {
+                    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al eliminar el producto.");
+                    return;
+                }
                 break;
 
             case "añadirProducto":
@@ -65,21 +99,19 @@ public class svGestionarInventario extends HttpServlet {
 
                 String cantidadStr2 = request.getParameter("cantidad");
                 if (cantidadStr2 == null || cantidadStr2.isEmpty()) {
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "El cantidad no puede estar vacía.");
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "La cantidad no puede estar vacía.");
                     return;
                 }
-                int cantidad = Integer.parseInt(precioStr);
-
-                String urlImg = request.getParameter("url_img");
-
-                if (nombre == null || nombre.isEmpty() || urlImg == null || urlImg.isEmpty()) {
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Los campos de nombre y URL de imagen no pueden estar vacíos.");
-                    return;
-                }
+                int cantidad = Integer.parseInt(cantidadStr2);
 
                 // Crear el producto con los parámetros del formulario
                 Producto nuevoProducto = new Producto(cantidad, codigo, nombre, precio);
-                bodega.agregarProducto(nuevoProducto);
+                try {
+                    productoJpaController.create(nuevoProducto); // Crear un nuevo producto
+                } catch (Exception e) {
+                    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al añadir el producto.");
+                    return;
+                }
                 break;
         }
 
@@ -87,6 +119,4 @@ public class svGestionarInventario extends HttpServlet {
         response.sendRedirect("manage-inventory.jsp");
     }
 }
-
-
-
+            

@@ -5,8 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.miscanti_ventainventario.Logica.UserManagment;
+import org.example.miscanti_ventainventario.DataBase.UsuarioJpaController;
 import org.example.miscanti_ventainventario.Logica.Usuario;
+import org.example.miscanti_ventainventario.Logica.Rol;
 
 import java.io.IOException;
 
@@ -32,23 +33,31 @@ public class svRegistro extends HttpServlet {
             return;
         }
 
-        // Simulación de registro exitoso (almacena en una base de datos o en memoria)
-        // En un proyecto real, aquí deberías llamar a una clase de servicio o DAO para manejar la lógica del registro.
+        // Crear una instancia de Usuario
+        Usuario nuevoUsuario = new Usuario(
+            nickName,
+            primerNombre,
+            segundoNombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            correo,
+            contrasena
+        );
+        nuevoUsuario.setRol(Rol.CLIENTE); // Establecer el rol por defecto
 
-        boolean registroExitoso = registrarUsuario(nickName, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, correo, contrasena);
+        // Usar UsuarioJpaController para persistir en la base de datos
+        UsuarioJpaController usuarioController = new UsuarioJpaController();
 
-        if (registroExitoso) {
-            // Redirigir a la página de éxito o inicio de sesión
+        try {
+            usuarioController.create(nuevoUsuario);
+            // Redirigir a la página de inicio de sesión tras el registro exitoso
             response.sendRedirect("login.jsp");
-        } else {
-            // Mostrar un mensaje de error si el registro falla
+        } catch (Exception e) {
+            // Manejar errores, como duplicidad de clave primaria o fallo en la base de datos
             request.setAttribute("errorMessage", "Ocurrió un error al registrar al usuario. Inténtalo nuevamente.");
-            request.getRequestDispatcher("registro.jsp").forward(request, response);
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            e.printStackTrace();
         }
     }
-
-    // Método simulado para registrar un usuario
-    private boolean registrarUsuario(String nickName, String primerNombre, String segundoNombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasena) {
-        return UserManagment.addUser(new Usuario(nickName, primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, correo, contrasena));
-    }
 }
+    

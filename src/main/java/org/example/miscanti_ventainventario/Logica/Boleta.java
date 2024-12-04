@@ -1,7 +1,8 @@
 package org.example.miscanti_ventainventario.Logica;
+
 public class Boleta {
 
-    public static String print(String[] texto) {
+    public static String print(String[] texto, int total) {
         // Definir el contenido básico de un PDF en formato texto plano.
         StringBuilder pdfContent = new StringBuilder();
 
@@ -25,24 +26,45 @@ public class Boleta {
 
         // Contenido de la página (texto)
         pdfContent.append("4 0 obj\n")
-                .append("<< /Length 44 >>\n")
+                .append("<< /Length 200 >>\n")
                 .append("stream\n");
 
-        // Texto
+        // Texto: Título de la boleta
         pdfContent.append("BT\n")
-                .append("/F1 12 Tf\n")  // Fuente y tamaño de texto
-                .append("70 700 Td\n")  // Posición del texto (x, y)
+                .append("/F1 16 Tf\n")
+                .append("70 750 Td\n")
                 .append("(AGUAS MISCANTI - COMPROBANTE DE COMPRA) Tj\n")
                 .append("0 -20 Td\n");
 
-        // Iterar sobre los productos o texto para imprimir
-        for (int i = 0; i < texto.length; i++) {
-            pdfContent.append("(------------------------------------------) Tj\n");
+        // Texto: Fecha de la boleta
+        pdfContent.append("0 -20 Td\n")
+                .append("("+java.time.LocalDate.now()+") Tj\n");
 
+        // Línea separadora
+        pdfContent.append("0 -20 Td\n")
+                .append("(------------------------------------------) Tj\n");
+
+        // Texto: Encabezado de la tabla de compra
+        pdfContent.append("0 -20 Td\n")
+                .append("(Producto               Cantidad  Precio  Subtotal) Tj\n");
+
+        // Iterar sobre los productos o texto para imprimir en formato de tabla
+        for (int i = 0; i < texto.length; i++) {
             pdfContent.append("0 -20 Td\n");
-            pdfContent.append("(" + texto[i] + ") Tj\n");
-            pdfContent.append("0 -20 Td\n");
+            pdfContent.append("("+texto[i]+") Tj\n");
         }
+
+        // Línea separadora para el total
+        pdfContent.append("0 -20 Td\n")
+                .append("(------------------------------------------) Tj\n");
+
+        // Mostrar el total de la boleta
+        pdfContent.append("0 -20 Td\n")
+                .append("(TOTAL: $ " + total + ") Tj\n");
+
+        // Pie de página con información adicional
+        pdfContent.append("0 -20 Td\n")
+                .append("(Gracias por su compra. Aguas Miscanti) Tj\n");
 
         pdfContent.append("ET\n");  // Fin del texto
         pdfContent.append("endstream\n");
@@ -50,24 +72,19 @@ public class Boleta {
 
         // Tabla de referencias cruzadas (xref)
         pdfContent.append("xref\n");
-        pdfContent.append("0 5\n");  // Número de objetos
+        pdfContent.append("0 5\n");
         pdfContent.append("0000000000 65535 f \n");
         pdfContent.append("0000000010 00000 n \n");
         pdfContent.append("0000000053 00000 n \n");
         pdfContent.append("0000000102 00000 n \n");
-        pdfContent.append("0000000178 00000 n \n");
+        pdfContent.append("0000000222 00000 n \n");
 
-        // Trailer
-        pdfContent.append("trailer\n")
-                .append("<< /Root 1 0 R /Size 5 >>\n");
-
-        // Posición de xref
-        pdfContent.append("startxref\n")
-                .append("256\n");
-
-        // Fin del archivo PDF
-        pdfContent.append("%%EOF");
+        pdfContent.append("trailer\n");
+        pdfContent.append("<< /Root 1 0 R /Size 5 >>\n");
+        pdfContent.append("startxref\n");
+        pdfContent.append("277\n");
+        pdfContent.append("%%EOF\n");
 
         return pdfContent.toString();
-    }}
-
+    }
+}
