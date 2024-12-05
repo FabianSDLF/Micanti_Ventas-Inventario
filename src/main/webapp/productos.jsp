@@ -1,6 +1,5 @@
 <%@page import="org.example.miscanti_ventainventario.DataBase.ProductoJpaController"%>
 <%@page import="java.util.List"%>
-<%@ page import="org.example.miscanti_ventainventario.Logica.Bodega" %>
 <%@ page import="org.example.miscanti_ventainventario.Logica.Producto" %><%--
   Created by IntelliJ IDEA.
   User: sapul
@@ -32,10 +31,14 @@
     <article class="producto">
       <h3><%= producto.getNombre() %></h3>
       <p>Precio: $<%= producto.getPrecio() %></p>
+      <img src="<%= producto.getImage() %>" alt="Imagen de <%= producto.getNombre() %>" class="producto-imagen">
+      <p><%= producto.getDescripcion() %></p>
       <form action="svAgregarAlCarrito" method="post">
         <input type="hidden" name="codigo" value="<%= producto.getCodigo() %>">
         <input type="hidden" name="nombre" value="<%= producto.getNombre() %>">
         <input type="hidden" name="precio" value="<%= producto.getPrecio() %>">
+        <input type="hidden" name="image" value="<%= producto.getImage()%>">
+        <input type="hidden" name="descripcion" value="<%= producto.getDescripcion()%>">
         <div class="cantidad-control">
           <button type="button" onclick="updateQuantity(<%= producto.getCodigo() %>, false)">-</button>
           <input type="number" id="quantity-<%= producto.getCodigo() %>" name="cantidad" value="1" min="1">

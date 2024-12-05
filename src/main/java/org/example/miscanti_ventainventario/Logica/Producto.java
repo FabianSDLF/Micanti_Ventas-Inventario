@@ -11,18 +11,20 @@ public class Producto implements Serializable {
     private int cantidad;
     private int precio;
     private String nombre;
-    private String descipcion;
+    private String descripcion;
+    private String image;
     
     public Producto(){
         
     }
     
-    public Producto(int cantidad, int codigo, String nombre, int precio) {
+    public Producto(int cantidad, int codigo, String nombre, int precio, String image) {
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
-        descipcion = "";
+        descripcion = "";
+        this.image = image;
     }
 
     public int getCantidad() {
@@ -56,11 +58,19 @@ public class Producto implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getDescipcion() {
-        return descipcion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescipcion(String descipcion) {
-        this.descipcion = descipcion;
+    public void setDescripcion(String descipcion) {
+        this.descripcion = descipcion;
+    }
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

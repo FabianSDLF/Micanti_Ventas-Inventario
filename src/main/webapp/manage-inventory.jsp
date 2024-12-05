@@ -10,9 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario Actual</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
-<body>x
+<body>
 
 <jsp:include page="component/header.jsp"></jsp:include>
 <main>
@@ -25,6 +24,8 @@
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -39,6 +40,8 @@
                     <td><%= elemento.getCodigo() %></td>
                     <td><%= elemento.getNombre() %></td>
                     <td><%= elemento.getCantidad() %></td>
+                    <td><%= elemento.getPrecio() %></td>
+                    <td><%= elemento.getDescripcion() %></td>     
                     <td>
                         <!-- Formulario para añadir o reducir -->
                         <form action="GestionarInventarioServlet" method="post" style="display:inline;">
@@ -67,6 +70,8 @@
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="number" name="cantidad" placeholder="Cantidad" required>
                 <input type="number" name="precio" placeholder="Precio" required>
+                <textarea name="descripcion" placeholder="Descripción" rows="3"></textarea>
+                <input type="url" name="image" placeholder="URL de la Imagen">
                 <button type="submit" name="accion" value="añadirProducto" class="btn-añadir">Añadir Producto</button>
             </form>
         </div>

@@ -20,10 +20,12 @@ public class svAgregarProdCarrito extends HttpServlet {
         String nombre = request.getParameter("nombre");
         int precio = Integer.parseInt(request.getParameter("precio"));
         int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-
+        String image = request.getParameter("image");
+        String descripcion = request.getParameter("descripcion");
         System.out.println(cantidad);
         // Crear el producto
-        Producto producto = new Producto(cantidad, codigo, nombre, precio);
+        Producto producto = new Producto(cantidad, codigo, nombre, precio, image);
+        producto.setDescripcion(descripcion);
 
         // Obtener el carrito de la sesión
         List<Producto> carrito = (List<Producto>) request.getSession().getAttribute("carrito");

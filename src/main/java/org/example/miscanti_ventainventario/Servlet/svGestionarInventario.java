@@ -29,7 +29,6 @@ public class svGestionarInventario extends HttpServlet {
 
         switch (accion) {
             case "añadir":
-                // Verificar que la cantidad no sea vacía
                 String cantidadStr = request.getParameter("cantidad");
                 if (cantidadStr == null || cantidadStr.isEmpty()) {
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "La cantidad no puede estar vacía.");
@@ -38,10 +37,9 @@ public class svGestionarInventario extends HttpServlet {
                 int cantidadAñadir = Integer.parseInt(cantidadStr);
                 Producto productoAñadir = productoJpaController.findProducto(codigo);
                 if (productoAñadir != null) {
-                    // Aumentamos el stock del producto encontrado
                     productoAñadir.setCantidad(productoAñadir.getCantidad() + cantidadAñadir);
                     try {
-                        productoJpaController.edit(productoAñadir); // Actualizamos el producto
+                        productoJpaController.edit(productoAñadir);
                     } catch (Exception e) {
                         response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al actualizar el stock.");
                         return;
@@ -52,7 +50,6 @@ public class svGestionarInventario extends HttpServlet {
                 break;
 
             case "reducir":
-                // Verificar que la cantidad no sea vacía
                 String cantidadReducirStr = request.getParameter("cantidad");
                 if (cantidadReducirStr == null || cantidadReducirStr.isEmpty()) {
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "La cantidad no puede estar vacía.");
@@ -61,11 +58,10 @@ public class svGestionarInventario extends HttpServlet {
                 int cantidadReducir = Integer.parseInt(cantidadReducirStr);
                 Producto productoReducir = productoJpaController.findProducto(codigo);
                 if (productoReducir != null) {
-                    // Reducimos el stock del producto encontrado
                     if (productoReducir.getCantidad() >= cantidadReducir) {
                         productoReducir.setCantidad(productoReducir.getCantidad() - cantidadReducir);
                         try {
-                            productoJpaController.edit(productoReducir); // Actualizamos el producto
+                            productoJpaController.edit(productoReducir);
                         } catch (Exception e) {
                             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al actualizar el stock.");
                             return;
@@ -81,7 +77,7 @@ public class svGestionarInventario extends HttpServlet {
 
             case "eliminar":
                 try {
-                    productoJpaController.destroy(codigo); // Elimina el producto de la base de datos
+                    productoJpaController.destroy(codigo);
                 } catch (Exception e) {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al eliminar el producto.");
                     return;
@@ -104,19 +100,35 @@ public class svGestionarInventario extends HttpServlet {
                 }
                 int cantidad = Integer.parseInt(cantidadStr2);
 
+                String descripcion = request.getParameter("descripcion");
+                if (descripcion == null || descripcion.isEmpty()) {
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "La descripción no puede estar vacía.");
+                    return;
+                }
+
+                String image = request.getParameter("image");
+                if (image == null || image.isEmpty()) {
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "La URL de la imagen no puede estar vacía.");
+                    return;
+                }
+
                 // Crear el producto con los parámetros del formulario
-                Producto nuevoProducto = new Producto(cantidad, codigo, nombre, precio);
+                Producto nuevoProducto = new Producto(cantidad, codigo, nombre, precio, image);
+                nuevoProducto.setDescripcion(descripcion);
                 try {
-                    productoJpaController.create(nuevoProducto); // Crear un nuevo producto
+                    productoJpaController.create(nuevoProducto);
                 } catch (Exception e) {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al añadir el producto.");
                     return;
                 }
                 break;
+
+            default:
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Acción no reconocida.");
+                return;
         }
 
         // Redirigir a una página de confirmación o a la lista de inventarios
         response.sendRedirect("manage-inventory.jsp");
     }
 }
-            
