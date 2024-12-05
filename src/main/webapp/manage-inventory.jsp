@@ -1,6 +1,5 @@
 <%@page import="org.example.miscanti_ventainventario.Logica.Producto"%>
 <%@page import="org.example.miscanti_ventainventario.DataBase.ProductoJpaController"%>
-<%@ page import="org.example.miscanti_ventainventario.Logica.BodegaManagment" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
