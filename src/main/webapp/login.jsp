@@ -26,10 +26,6 @@
         </p>
     </form>
 
-    <div class="forgot-password">
-        <a href="#">¿Olvidaste tu contraseña?</a>
-    </div>
-
     <div class="register-link">
         <p>¿No tienes cuenta? <a href="register.jsp">Regístrate aquí</a></p>
     </div>
