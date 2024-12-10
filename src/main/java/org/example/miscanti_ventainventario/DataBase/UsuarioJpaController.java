@@ -12,7 +12,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import org.example.miscanti_ventainventario.Logica.Usuario;
 
-public class UsuarioJpaController implements Serializable {
+public class    UsuarioJpaController implements Serializable {
 
     private EntityManagerFactory emf = null;
 

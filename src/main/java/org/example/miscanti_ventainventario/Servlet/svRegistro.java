@@ -43,12 +43,14 @@ public class svRegistro extends HttpServlet {
             correo,
             contrasena
         );
-        nuevoUsuario.setRol(Rol.CLIENTE); // Establecer el rol por defecto
 
         // Usar UsuarioJpaController para persistir en la base de datos
         UsuarioJpaController usuarioController = new UsuarioJpaController();
 
         try {
+            if (usuarioController.findUsuarioEntities().isEmpty()) {
+                nuevoUsuario.setRol(Rol.ADMINISTRADOR);
+            }
             usuarioController.create(nuevoUsuario);
             // Redirigir a la página de inicio de sesión tras el registro exitoso
             response.sendRedirect("login.jsp");
